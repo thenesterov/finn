@@ -1,0 +1,14 @@
+$finn_app $mol_book2_catalog
+	title \💸 Finn – финансовый трекер
+	menu_title \💸 Finn
+	spreads *
+		dashboard <= Dashboard $mol_page
+			title \Дашборд
+		transactions <= Transactions $mol_page
+			title \Транзакции
+		calendar <= Calendar $mol_page
+			title \Календарь
+		accounts <= Accounts $mol_page
+			title \Счета
+		categories <= Categories $mol_page
+			title \Категории
