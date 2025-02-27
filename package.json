@@ -1,0 +1,25 @@
+{
+  "name": "finn_app",
+  "version": "0.0.1",
+  "exports": {
+    "node": {
+      "import": "./node.mjs",
+      "default": "./node.js"
+    },
+    "types": "./web.d.ts",
+    "import": "./web.mjs",
+    "default": "./web.js"
+  },
+  "main": "./web.js",
+  "module": "./web.mjs",
+  "browser": "./web.js",
+  "types": "./web.d.ts",
+  "keywords": [
+    "$finn_app",
+    "$finn",
+    "$mol_offline_install",
+    "$mol_offline",
+    "$mol"
+  ],
+  "dependencies": {}
+}
