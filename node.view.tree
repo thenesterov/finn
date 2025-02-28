@@ -327,17 +327,20 @@ $mol_book2_catalog $mol_book2
 		sub /
 			<= Spread_close_icon $mol_icon_close
 
+$finn_widgets_page $mol_page
+
 $finn_app $mol_book2_catalog
 	title \💸 Finn – финансовый трекер
 	menu_title \💸 Finn
 	spreads *
-		dashboard <= Dashboard $mol_page
+		dashboard <= Dashboard $finn_widgets_page
 			title \Дашборд
-		transactions <= Transactions $mol_page
+		transactions <= Transactions $finn_widgets_page
 			title \Транзакции
-		calendar <= Calendar $mol_page
+		calendar <= Calendar $finn_widgets_page
 			title \Календарь
-		accounts <= Accounts $mol_page
+		accounts <= Accounts $finn_widgets_page
 			title \Счета
-		categories <= Categories $mol_page
+		categories <= Categories $finn_widgets_page
 			title \Категории
+	Placeholder null

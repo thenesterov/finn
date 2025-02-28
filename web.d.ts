@@ -58,6 +58,21 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    var $mol_dom_context: typeof globalThis;
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    var $mol_dom: typeof globalThis;
+}
+
+declare namespace $ {
+    function $mol_style_attach(id: string, text: string): HTMLStyleElement | null;
+}
+
+declare namespace $ {
     const $mol_ambient_ref: unique symbol;
     type $mol_ambient_context = $;
     function $mol_ambient(this: $ | void, overrides: Partial<$>): $;
@@ -387,13 +402,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    var $mol_dom_context: typeof globalThis;
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
     class $mol_view_selection extends $mol_object {
         static focused(next?: Element[], notify?: 'notify'): Element[];
     }
@@ -421,10 +429,6 @@ declare namespace $ {
     class $mol_memo extends $mol_wrapper {
         static wrap<This extends object, Value>(task: (this: This, next?: Value) => Value): (this: This, next?: Value) => Value | undefined;
     }
-}
-
-declare namespace $ {
-    var $mol_dom: typeof globalThis;
 }
 
 declare namespace $ {
@@ -500,10 +504,6 @@ declare namespace $ {
 
 declare namespace $ {
     type $mol_type_pick<Input, Upper> = Pick<Input, $mol_type_keys_extract<Input, Upper>>;
-}
-
-declare namespace $ {
-    function $mol_style_attach(id: string, text: string): HTMLStyleElement | null;
 }
 
 declare namespace $ {
@@ -2484,37 +2484,51 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_page__title_finn_app_1 = $mol_type_enforce<
+	export class $finn_widgets_page extends $mol_page {
+	}
+	
+}
+
+//# sourceMappingURL=page.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $finn_widgets_page__title_finn_app_1 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_page['title'] >
+		ReturnType< $finn_widgets_page['title'] >
 	>
-	type $mol_page__title_finn_app_2 = $mol_type_enforce<
+	type $finn_widgets_page__title_finn_app_2 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_page['title'] >
+		ReturnType< $finn_widgets_page['title'] >
 	>
-	type $mol_page__title_finn_app_3 = $mol_type_enforce<
+	type $finn_widgets_page__title_finn_app_3 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_page['title'] >
+		ReturnType< $finn_widgets_page['title'] >
 	>
-	type $mol_page__title_finn_app_4 = $mol_type_enforce<
+	type $finn_widgets_page__title_finn_app_4 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_page['title'] >
+		ReturnType< $finn_widgets_page['title'] >
 	>
-	type $mol_page__title_finn_app_5 = $mol_type_enforce<
+	type $finn_widgets_page__title_finn_app_5 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_page['title'] >
+		ReturnType< $finn_widgets_page['title'] >
 	>
 	export class $finn_app extends $mol_book2_catalog {
-		Dashboard( ): $mol_page
-		Transactions( ): $mol_page
-		Calendar( ): $mol_page
-		Accounts( ): $mol_page
-		Categories( ): $mol_page
+		Dashboard( ): $finn_widgets_page
+		Transactions( ): $finn_widgets_page
+		Calendar( ): $finn_widgets_page
+		Accounts( ): $finn_widgets_page
+		Categories( ): $finn_widgets_page
 		title( ): string
 		menu_title( ): string
 		spreads( ): ({ 
@@ -2524,6 +2538,7 @@ declare namespace $ {
 			'accounts': ReturnType< $finn_app['Accounts'] >,
 			'categories': ReturnType< $finn_app['Categories'] >,
 		}) 
+		Placeholder( ): any
 	}
 	
 }

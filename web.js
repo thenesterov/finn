@@ -199,6 +199,48 @@ var $;
 "use strict";
 var $;
 (function ($) {
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $.$mol_dom_context = self;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $.$mol_dom = $mol_dom_context;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_style_attach(id, text) {
+        const doc = $mol_dom_context.document;
+        if (!doc)
+            return null;
+        const elid = `$mol_style_attach:${id}`;
+        let el = doc.getElementById(elid);
+        if (!el) {
+            el = doc.createElement('style');
+            el.id = elid;
+            doc.head.appendChild(el);
+        }
+        if (el.innerHTML != text)
+            el.innerHTML = text;
+        return el;
+    }
+    $.$mol_style_attach = $mol_style_attach;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
     $.$mol_ambient_ref = Symbol('$mol_ambient_ref');
     function $mol_ambient(overrides) {
         return Object.setPrototypeOf(overrides, this || $);
@@ -1655,19 +1697,6 @@ var $;
 "use strict";
 var $;
 (function ($) {
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $.$mol_dom_context = self;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
     class $mol_view_selection extends $mol_object {
         static focused(next, notify) {
             const parents = [];
@@ -1772,13 +1801,6 @@ var $;
         }
     }
     $.$mol_memo = $mol_memo;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $.$mol_dom = $mol_dom_context;
 })($ || ($ = {}));
 
 ;
@@ -2042,28 +2064,6 @@ var $;
 
 ;
 "use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_style_attach(id, text) {
-        const doc = $mol_dom_context.document;
-        if (!doc)
-            return null;
-        const elid = `$mol_style_attach:${id}`;
-        let el = doc.getElementById(elid);
-        if (!el) {
-            el = doc.createElement('style');
-            el.id = elid;
-            doc.head.appendChild(el);
-        }
-        if (el.innerHTML != text)
-            el.innerHTML = text;
-        return el;
-    }
-    $.$mol_style_attach = $mol_style_attach;
-})($ || ($ = {}));
 
 ;
 "use strict";
@@ -7079,29 +7079,43 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$finn_widgets_page) = class $finn_widgets_page extends ($.$mol_page) {};
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("finn/widgets/page.view.css", "[finn_widgets_page] {\n\tflex-basis: 50rem;\n}\n");
+})($ || ($ = {}));
+
+;
 	($.$finn_app) = class $finn_app extends ($.$mol_book2_catalog) {
 		Dashboard(){
-			const obj = new this.$.$mol_page();
+			const obj = new this.$.$finn_widgets_page();
 			(obj.title) = () => ("Дашборд");
 			return obj;
 		}
 		Transactions(){
-			const obj = new this.$.$mol_page();
+			const obj = new this.$.$finn_widgets_page();
 			(obj.title) = () => ("Транзакции");
 			return obj;
 		}
 		Calendar(){
-			const obj = new this.$.$mol_page();
+			const obj = new this.$.$finn_widgets_page();
 			(obj.title) = () => ("Календарь");
 			return obj;
 		}
 		Accounts(){
-			const obj = new this.$.$mol_page();
+			const obj = new this.$.$finn_widgets_page();
 			(obj.title) = () => ("Счета");
 			return obj;
 		}
 		Categories(){
-			const obj = new this.$.$mol_page();
+			const obj = new this.$.$finn_widgets_page();
 			(obj.title) = () => ("Категории");
 			return obj;
 		}
@@ -7120,6 +7134,9 @@ var $;
 				"categories": (this.Categories())
 			};
 		}
+		Placeholder(){
+			return null;
+		}
 	};
 	($mol_mem(($.$finn_app.prototype), "Dashboard"));
 	($mol_mem(($.$finn_app.prototype), "Transactions"));
@@ -7127,6 +7144,13 @@ var $;
 	($mol_mem(($.$finn_app.prototype), "Accounts"));
 	($mol_mem(($.$finn_app.prototype), "Categories"));
 
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("finn/app/app.view.css", "[finn_widgets_page] {\n\tmargin-right: auto;\n}\n\n[finn_app_menu] {\n\tflex-basis: 20em;\n\tmargin-left: auto\n}\n");
+})($ || ($ = {}));
 
 ;
 "use strict";
