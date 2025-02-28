@@ -15,5 +15,7 @@
 	pack yuf git \https://github.com/zerkalica/yuf.git
 \/mol
 	pack icon git \https://github.com/nin-jin/mol_icon.git
-\/finn/app
+\/finn
 	include \/mol/offline/install
+\/mol/view
+	include \/mol/view/tree/test
