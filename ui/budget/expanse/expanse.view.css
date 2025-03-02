@@ -1,0 +1,33 @@
+[finn_ui_budget_expanse_expanse] {
+	border: 1px solid var(--mol_theme_line);
+}
+
+[finn_ui_budget_expanse] mol_check_expand {
+	color: var(--mol_theme_text);
+}
+
+[finn_ui_budget_expanse] mol_check_expand:active {
+	color: var(--mol_theme_text);
+}
+
+[finn_ui_budget_expanse_quota] {
+	align-items: center;
+	margin-right: var(--mol_gap_block);
+}
+
+[finn_ui_budget_expanse_create_subcat_button] {
+	margin-top: var(--mol_gap_block);
+	opacity: 0.75;
+}
+
+[finn_ui_budget_expanse_create_subcat_button]:hover {
+	opacity: 1;
+}
+
+[finn_ui_budget_expanse_editing_title] {
+	margin-top: calc(var(--mol_gap_block) / 2);
+}
+
+[finn_ui_budget_expanse_editing_title_save] {
+	margin: 0 calc(var(--mol_gap_block) / 2);
+}

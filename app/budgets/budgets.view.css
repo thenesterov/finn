@@ -1,0 +1,27 @@
+[finn_app_budgets_income_title_text],
+[finn_app_budgets_expanse_title_text] {
+	padding: var(--mol_gap_text);
+	padding-left: var(--finn_ui_gap_half);
+
+	text-shadow: 0 0;
+	font-weight: normal;
+	font-size: 1.25rem;
+}
+
+[finn_app_budgets_expanses] {
+	margin-top: calc(var(--mol_gap_block) * 3);
+}
+
+[finn_app_budgets_income_title],
+[finn_app_budgets_expanse_title] {
+	align-items: baseline;
+}
+
+[finn_ui_budget_income],
+[finn_ui_budget_expanse] {
+	margin-top: var(--mol_gap_block);
+}
+
+[finn_ui_stub_empty] {
+	padding: var(--finn_ui_gap_half) 0 0 var(--finn_ui_gap_half);
+}

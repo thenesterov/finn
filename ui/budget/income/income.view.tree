@@ -1,0 +1,26 @@
+$finn_ui_budget_income $mol_list
+	title \
+	value 0
+	-
+	title_editing_mode? <= title_editing_mode_active? false
+	-
+	sub /
+		<= Income $mol_button_minor sub /
+			<= Title $mol_paragraph
+				title <= _income_title \
+				event *
+					dblclick? <=> edit_title_click? null
+			<= Quota $finn_ui_budget_income_value
+				value <= income_value 0
+		<= Editing_title $mol_view sub /
+			<= Editing_title_input $mol_string
+				hint \Введите новое название
+				value? <=> edited_title_value? \
+			<= Editing_title_save $finn_ui_button
+				title \
+				icon <= Editing_title_save_icon $mol_icon_check
+				click? <=> save_editing_title? null
+			<= Editing_title_cancel $finn_ui_button
+				title \
+				icon <= Editing_title_cancel_icon $mol_icon_close
+				click? <=> cancel_editing_title? null

@@ -1,0 +1,12 @@
+[finn_ui_expander] {
+	background: var(--mol_theme_hover);
+	border-radius: var(--mol_gap_round);
+}
+
+[finn_ui_expander] [mol_button_typed]:hover {
+	box-shadow: none;
+}
+
+[finn_ui_expander_content] {
+	padding: var(--mol_gap_text);
+}

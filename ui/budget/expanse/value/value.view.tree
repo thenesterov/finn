@@ -1,0 +1,12 @@
+$finn_ui_budget_expanse_value $mol_view
+	value 0
+	total 0
+	-
+	currency \₽
+	-
+	style *
+		^
+		color? <= value_color? \var(--mol_theme_shade)
+	sub /
+		<= Value $mol_paragraph
+			title? <= value_presentation? \

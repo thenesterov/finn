@@ -1,0 +1,24 @@
+[finn_ui_budget_income_income] {
+	color: var(--mol_theme_text);
+	background: var(--mol_theme_hover);
+	justify-content: space-between;
+	border: 1px solid var(--mol_theme_line);
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+[finn_ui_budget_income_income]:hover {
+	box-shadow: none;
+}
+
+[finn_ui_budget_income_income]:active {
+	color: var(--mol_theme_text);
+}
+
+[finn_ui_budget_income_editing_title] {
+	margin-top: var(--finn_ui_gap_half);
+}
+
+[finn_ui_budget_income_editing_title_save] {
+	margin: 0 var(--finn_ui_gap_half);
+}

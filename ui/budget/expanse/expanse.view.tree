@@ -1,0 +1,37 @@
+$finn_ui_budget_expanse $mol_list
+	title \
+	value 0
+	total 0
+	-
+	title_editing_mode? <= title_editing_mode_active? false
+	-
+	sub /
+		<= Expanse $finn_ui_expander
+			label /
+				<= Title $mol_paragraph
+					title <= _expanse_title \
+					event *
+						dblclick? <=> edit_title_click? null
+			content /
+				<= Expanse_subcats $mol_list
+					rows <= subcats /
+						<= Expanses_subcats_is_empty $finn_ui_stub_empty
+							text \Создайте первую подкатегорию расхода, нажав кнопку ниже
+				<= Create_subcat_button $finn_ui_button
+					title \Добавить подкатегорию
+					icon <= Add_subcat_icon $mol_icon_plus
+			Tools <= Quota $finn_ui_budget_expanse_value
+				value <=> value
+				total <=> total
+		<= Editing_title $mol_view sub /
+			<= Editing_title_input $mol_string
+				hint \Введите новое название
+				value? <=> edited_title_value? \
+			<= Editing_title_save $finn_ui_button
+				title \
+				icon <= Editing_title_save_icon $mol_icon_check
+				click? <=> save_editing_title? null
+			<= Editing_title_cancel $finn_ui_button
+				title \
+				icon <= Editing_title_cancel_icon $mol_icon_close
+				click? <=> cancel_editing_title? null

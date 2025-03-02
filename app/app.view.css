@@ -1,4 +1,12 @@
-[finn_widgets_page] {
+:root {
+	/* зеленая цветовая тема по умолчанию */
+	--mol_theme_hue: 120deg;
+
+	/* отключение подсветки тапов на мобильных устройствах */
+	-webkit-tap-highlight-color: transparent;
+}
+
+[finn_ui_page] {
 	margin-right: auto;
 }
 

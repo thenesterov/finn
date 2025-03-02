@@ -1,0 +1,48 @@
+$finn_app_budgets $finn_ui_page
+	title \Бюджеты
+	body /
+		<= Incomes $mol_section
+			head <= income_head /
+				<= Income_title $mol_view sub /
+					<= Income_title_text $finn_ui_header
+						title \Доходы
+					<= Income_quota $finn_ui_budget_income_value
+						value <= total_income_quota 0
+			tools /
+				<= Add_source $finn_ui_button
+					title \
+					icon <= Add_source_icon $mol_icon_plus
+			content <= incomes_list /
+				<= Incomes_is_empty $finn_ui_stub_empty
+					text \Создайте первый источник доходов, нажав на +
+		-
+		<= Expanses $mol_section
+			head <= expanse_head /
+				<= Expanse_title $mol_view sub /
+					<= Expanse_title_text $finn_ui_header
+						title \Расходы
+					<= Expanse_quota $finn_ui_budget_expanse_value
+						value <= total_expanse_value 0
+						total <= total_expanse_total 0
+			tools /
+				<= Add_category $finn_ui_button
+					title \
+					icon <= Add_category_icon $mol_icon_plus
+			content <= expanses_list /
+				<= Expanses_is_empty $finn_ui_stub_empty
+					text \Создайте первую категорию расходов, нажав на +
+	-
+	Income_source* $finn_ui_budget_income
+		title* <= income_title* \...
+		value* <= income_value* 0
+	-
+	Expance_category* $finn_ui_budget_expanse
+		title* <= expanse_title* \...
+		subcats* <= expanse_subcats* /
+			<= Expanses_subcats_is_empty $finn_ui_stub_empty
+				text \Создайте первую подкатегорию расхода, нажав кнопку ниже
+	-
+	Expanse_subcat* $finn_ui_budget_expanse_subcat
+		title* <= subcat_title* \...
+		value* <= subcat_value* 0
+		total* <= subcat_total* 0

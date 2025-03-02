@@ -1,0 +1,30 @@
+[finn_ui_budget_expanse_subcat_subcat] {
+	background: var(--mol_theme_hover);
+	border: 1px solid var(--mol_theme_line);
+	color: var(--mol_theme_text);
+	justify-content: space-between;
+}
+
+[finn_ui_budget_expanse_subcat_subcat]:active {
+	color: var(--mol_theme_text);
+}
+
+[finn_ui_budget_expanse_subcat_editing_title] {
+	margin-top: calc(var(--mol_gap_block) / 2);
+}
+
+[finn_ui_budget_expanse_subcat_editing_title_save] {
+	margin: 0 calc(var(--mol_gap_block) / 2);
+}
+
+[finn_ui_budget_expanse_subcat_editing_total_input] {
+	width: 100%;
+}
+
+[finn_ui_budget_expanse_subcat_editing_total] {
+	margin-top: calc(var(--mol_gap_block) / 2);
+}
+
+[finn_ui_budget_expanse_subcat_editing_total_save] {
+	margin: 0 calc(var(--mol_gap_block) / 2);
+}

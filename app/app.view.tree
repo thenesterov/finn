@@ -1,15 +1,17 @@
 $finn_app $mol_book2_catalog
 	title \💸 Finn – финансовый трекер
 	menu_title \💸 Finn
+	plugins /
+		<= Theme $mol_theme_auto
+	menu_tools /
+		<= Lighter $mol_lights_toggle
+			Icon <= Lights_icon $mol_icon_brightness_4
 	spreads *
-		dashboard <= Dashboard $finn_widgets_page
-			title \Дашборд
-		transactions <= Transactions $finn_widgets_page
+		transactions <= Transactions $finn_ui_page
 			title \Транзакции
-		calendar <= Calendar $finn_widgets_page
-			title \Календарь
-		accounts <= Accounts $finn_widgets_page
+		accounts <= Accounts $finn_ui_page
 			title \Счета
-		categories <= Categories $finn_widgets_page
-			title \Категории
+		budgets <= Budgets $finn_app_budgets
+		calendar <= Calendar $finn_ui_page
+			title \Календарь
 	Placeholder null

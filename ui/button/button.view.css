@@ -1,0 +1,4 @@
+[finn_ui_button] {
+	background: var(--mol_theme_hover);
+	color: var(--mol_theme_text);
+}
