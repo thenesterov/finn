@@ -327,20 +327,311 @@ $mol_book2_catalog $mol_book2
 		sub /
 			<= Spread_close_icon $mol_icon_close
 
-$finn_widgets_page $mol_page
+$mol_theme_auto $mol_plugin
+	attr * mol_theme <= theme \
+
+$mol_icon_brightness_4 $mol_icon path \M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z
+
+$mol_check $mol_button_minor
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role <= aria_role \checkbox
+	sub /$mol_view_content
+		<= Icon null
+		<= label /
+			<= Title $mol_view
+				sub /
+					<= title \
+
+$mol_check_icon $mol_check
+
+$mol_lights_toggle $mol_check_icon
+	Icon <= Lights_icon $mol_icon_brightness_4
+	hint @ \Toggle lights
+	checked? <=> lights? false
+
+$finn_ui_page $mol_page
+
+$finn_ui_header $mol_paragraph
+	dom_name \h3
+
+$finn_ui_budget_income_value $mol_view
+	value 0
+	currency \₽
+	-
+	style *
+		^
+		color? <= value_color? \var(--mol_theme_shade)
+	sub /
+		<= Value $mol_paragraph
+			title? <= value_presentation? \
+
+$mol_icon_plus $mol_icon path \M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z
+
+$finn_ui_button $mol_button_minor
+	icon null
+
+$finn_ui_stub_empty $mol_paragraph
+	prefix \Здесь пока пусто. 
+	text \
+	title <= stub_title \
+
+$mol_section $mol_list
+	level 1
+	rows /
+		<= Head $mol_view
+			sub <= head /
+				<= Title $mol_paragraph
+					dom_name <= title_dom_name \h1
+					title <= title
+				<= Tools $mol_view sub <= tools /
+		<= Content $mol_list
+			rows <= content /
+
+$finn_ui_budget_expanse_value $mol_view
+	value 0
+	total 0
+	-
+	currency \₽
+	-
+	style *
+		^
+		color? <= value_color? \var(--mol_theme_shade)
+	sub /
+		<= Value $mol_paragraph
+			title? <= value_presentation? \
+
+$mol_icon_check $mol_icon path \M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z
+
+$finn_ui_budget_income $mol_list
+	title \
+	value 0
+	-
+	title_editing_mode? <= title_editing_mode_active? false
+	-
+	sub /
+		<= Income $mol_button_minor sub /
+			<= Title $mol_paragraph
+				title <= _income_title \
+				event *
+					dblclick? <=> edit_title_click? null
+			<= Quota $finn_ui_budget_income_value
+				value <= income_value 0
+		<= Editing_title $mol_view sub /
+			<= Editing_title_input $mol_string
+				hint \Введите новое название
+				value? <=> edited_title_value? \
+			<= Editing_title_save $finn_ui_button
+				title \
+				icon <= Editing_title_save_icon $mol_icon_check
+				click? <=> save_editing_title? null
+			<= Editing_title_cancel $finn_ui_button
+				title \
+				icon <= Editing_title_cancel_icon $mol_icon_close
+				click? <=> cancel_editing_title? null
+
+$mol_icon_chevron $mol_icon path \M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z
+
+$mol_check_expand $mol_check
+	Icon $mol_icon_chevron
+	level 0
+	style *
+		^
+		paddingLeft <= level_style \0px
+	checked? <=> expanded? false
+	enabled <= expandable false
+
+$mol_expander $mol_list
+	rows /
+		<= Label $mol_view
+			sub /
+				<= Trigger $mol_check_expand
+					checked? <=> expanded? false
+					expandable <= expandable true
+					label <= label /
+						<= title
+				<= Tools null
+		<= Content $mol_list
+			rows <= content /
+
+$finn_ui_expander $mol_expander
+
+$finn_ui_budget_expanse $mol_list
+	title \
+	value 0
+	total 0
+	-
+	title_editing_mode? <= title_editing_mode_active? false
+	-
+	sub /
+		<= Expanse $finn_ui_expander
+			label /
+				<= Title $mol_paragraph
+					title <= _expanse_title \
+					event *
+						dblclick? <=> edit_title_click? null
+			content /
+				<= Expanse_subcats $mol_list
+					rows <= subcats /
+						<= Expanses_subcats_is_empty $finn_ui_stub_empty
+							text \Создайте первую подкатегорию расхода, нажав кнопку ниже
+				<= Create_subcat_button $finn_ui_button
+					title \Добавить подкатегорию
+					icon <= Add_subcat_icon $mol_icon_plus
+			Tools <= Quota $finn_ui_budget_expanse_value
+				value <=> value
+				total <=> total
+		<= Editing_title $mol_view sub /
+			<= Editing_title_input $mol_string
+				hint \Введите новое название
+				value? <=> edited_title_value? \
+			<= Editing_title_save $finn_ui_button
+				title \
+				icon <= Editing_title_save_icon $mol_icon_check
+				click? <=> save_editing_title? null
+			<= Editing_title_cancel $finn_ui_button
+				title \
+				icon <= Editing_title_cancel_icon $mol_icon_close
+				click? <=> cancel_editing_title? null
+
+$mol_icon_minus $mol_icon path \M19,13H5V11H19V13Z
+
+$mol_number $mol_view
+	precision_view <= precision 1
+	precision_change <= precision 1
+	value_min -Infinity
+	value_max +Infinity
+	value? +NaN
+	enabled true
+	sub /
+		<= String $mol_string
+			- \ we don't want native number controls in mobile devices
+			- \ https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box
+			type <= type \tel
+			value? <=> value_string? \
+			hint <= hint \ 
+			enabled <= string_enabled <= enabled
+			submit? <=> submit? null
+		<= Dec $mol_button_minor
+			event_click? <=> event_dec? null
+			enabled <= dec_enabled <= enabled
+			sub / <= dec_icon $mol_icon_minus
+		<= Inc $mol_button_minor
+			event_click? <=> event_inc? null
+			enabled <= inc_enabled <= enabled
+			sub / <= inc_icon $mol_icon_plus
+
+$finn_ui_budget_expanse_subcat $mol_list
+	title \
+	value 0
+	total 0
+	-
+	title_editing_mode? <= title_editing_mode_active? false
+	total_editing_mode? <= total_editing_mode_active? false
+	-
+	sub /
+		<= Subcat $mol_button_minor sub /
+			<= Title $mol_paragraph
+				title <= _subcat_title \
+				event *
+					dblclick? <=> edit_title_click? null
+			<= Quota $finn_ui_budget_expanse_value
+				value <=> value
+				total <= _subcat_total 0
+				event *
+					dblclick? <=> edit_total_click? null
+		<= Editing_title $mol_view sub /
+			<= Editing_title_input $mol_string
+				hint \Введите новое название
+				value? <=> edited_title_value? \
+			<= Editing_title_save $finn_ui_button
+				title \
+				icon <= Editing_title_save_icon $mol_icon_check
+				click? <=> save_editing_title? null
+			<= Editing_title_cancel $finn_ui_button
+				title \
+				icon <= Editing_title_cancel_icon $mol_icon_close
+				click? <=> cancel_editing_title? null
+		<= Editing_total $mol_view sub /
+			<= Editing_total_input $mol_number
+				value_min 0
+				precision_change 500
+				hint \Введите новую сумму
+				value? <=> edited_total_value? 0
+			<= Editing_total_save $finn_ui_button
+				title \
+				icon <= Editing_total_save_icon $mol_icon_check
+				click? <=> save_editing_total? null
+			<= Editing_total_cancel $finn_ui_button
+				title \
+				icon <= Editing_total_cancel_icon $mol_icon_close
+				click? <=> cancel_editing_total? null
+
+$finn_app_budgets $finn_ui_page
+	title \Бюджеты
+	body /
+		<= Incomes $mol_section
+			head <= income_head /
+				<= Income_title $mol_view sub /
+					<= Income_title_text $finn_ui_header
+						title \Доходы
+					<= Income_quota $finn_ui_budget_income_value
+						value <= total_income_quota 0
+			tools /
+				<= Add_source $finn_ui_button
+					title \
+					icon <= Add_source_icon $mol_icon_plus
+			content <= incomes_list /
+				<= Incomes_is_empty $finn_ui_stub_empty
+					text \Создайте первый источник доходов, нажав на +
+		-
+		<= Expanses $mol_section
+			head <= expanse_head /
+				<= Expanse_title $mol_view sub /
+					<= Expanse_title_text $finn_ui_header
+						title \Расходы
+					<= Expanse_quota $finn_ui_budget_expanse_value
+						value <= total_expanse_value 0
+						total <= total_expanse_total 0
+			tools /
+				<= Add_category $finn_ui_button
+					title \
+					icon <= Add_category_icon $mol_icon_plus
+			content <= expanses_list /
+				<= Expanses_is_empty $finn_ui_stub_empty
+					text \Создайте первую категорию расходов, нажав на +
+	-
+	Income_source* $finn_ui_budget_income
+		title* <= income_title* \...
+		value* <= income_value* 0
+	-
+	Expance_category* $finn_ui_budget_expanse
+		title* <= expanse_title* \...
+		subcats* <= expanse_subcats* /
+			<= Expanses_subcats_is_empty $finn_ui_stub_empty
+				text \Создайте первую подкатегорию расхода, нажав кнопку ниже
+	-
+	Expanse_subcat* $finn_ui_budget_expanse_subcat
+		title* <= subcat_title* \...
+		value* <= subcat_value* 0
+		total* <= subcat_total* 0
 
 $finn_app $mol_book2_catalog
 	title \💸 Finn – финансовый трекер
 	menu_title \💸 Finn
+	plugins /
+		<= Theme $mol_theme_auto
+	menu_tools /
+		<= Lighter $mol_lights_toggle
+			Icon <= Lights_icon $mol_icon_brightness_4
 	spreads *
-		dashboard <= Dashboard $finn_widgets_page
-			title \Дашборд
-		transactions <= Transactions $finn_widgets_page
+		transactions <= Transactions $finn_ui_page
 			title \Транзакции
-		calendar <= Calendar $finn_widgets_page
-			title \Календарь
-		accounts <= Accounts $finn_widgets_page
+		accounts <= Accounts $finn_ui_page
 			title \Счета
-		categories <= Categories $finn_widgets_page
-			title \Категории
+		budgets <= Budgets $finn_app_budgets
+		calendar <= Calendar $finn_ui_page
+			title \Календарь
 	Placeholder null

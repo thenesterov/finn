@@ -2589,14 +2589,185 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_media extends $mol_object2 {
+        static match(query: string, next?: boolean): boolean;
+    }
+}
 
-	export class $finn_widgets_page extends $mol_page {
+declare namespace $ {
+    function $mol_lights(this: $, next?: boolean): boolean;
+}
+
+declare namespace $ {
+
+	export class $mol_theme_auto extends $mol_plugin {
+		theme( ): string
+		attr( ): ({ 
+			'mol_theme': ReturnType< $mol_theme_auto['theme'] >,
+		}) 
+	}
+	
+}
+
+//# sourceMappingURL=auto.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_theme_auto extends $.$mol_theme_auto {
+        theme(): "$mol_theme_light" | "$mol_theme_dark";
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_icon_brightness_4 extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=4.view.tree.d.ts.map
+declare namespace $ {
+    function $mol_maybe<Value>(value: Value | null | undefined): Value[];
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $mol_check extends $mol_button_minor {
+		checked( next?: boolean ): boolean
+		aria_checked( ): string
+		aria_role( ): string
+		Icon( ): any
+		title( ): string
+		Title( ): $mol_view
+		label( ): readonly(any)[]
+		attr( ): ({ 
+			'mol_check_checked': ReturnType< $mol_check['checked'] >,
+			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
+			'role': ReturnType< $mol_check['aria_role'] >,
+		})  & ReturnType< $mol_button_minor['attr'] >
+		sub( ): readonly($mol_view_content)[]
+	}
+	
+}
+
+//# sourceMappingURL=check.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check extends $.$mol_check {
+        click(next?: Event): void;
+        sub(): readonly $mol_view_content[];
+        label(): readonly any[];
+        aria_checked(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_check_icon extends $mol_check {
+	}
+	
+}
+
+//# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_lights_toggle extends $mol_check_icon {
+		Lights_icon( ): $mol_icon_brightness_4
+		lights( next?: boolean ): boolean
+		Icon( ): ReturnType< $mol_lights_toggle['Lights_icon'] >
+		hint( ): string
+		checked( next?: ReturnType< $mol_lights_toggle['lights'] > ): ReturnType< $mol_lights_toggle['lights'] >
+	}
+	
+}
+
+//# sourceMappingURL=toggle.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_lights_toggle extends $.$mol_lights_toggle {
+        lights(next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $finn_ui_page extends $mol_page {
 	}
 	
 }
 
 //# sourceMappingURL=page.view.tree.d.ts.map
 declare namespace $ {
+
+	export class $finn_ui_header extends $mol_paragraph {
+		dom_name( ): string
+	}
+	
+}
+
+//# sourceMappingURL=header.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_paragraph__title_finn_ui_budget_income_value_1 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_income_value['value_presentation'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	export class $finn_ui_budget_income_value extends $mol_view {
+		value_color( next?: string ): string
+		value_presentation( next?: string ): string
+		Value( ): $mol_paragraph
+		value( ): number
+		currency( ): string
+		style( ): ({ 
+			color( next?: ReturnType< $finn_ui_budget_income_value['value_color'] > ): ReturnType< $finn_ui_budget_income_value['value_color'] >,
+		})  & ReturnType< $mol_view['style'] >
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=value.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $finn_ui_budget_income_value extends $.$finn_ui_budget_income_value {
+        value_presentation(next?: string): string;
+        value_color(next?: string): string;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_icon_plus extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=plus.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $finn_ui_button extends $mol_button_minor {
+		icon( ): any
+	}
+	
+}
+
+//# sourceMappingURL=button.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $finn_ui_button extends $.$finn_ui_button {
+        sub(): readonly ($mol_view_content)[];
+    }
 }
 
 declare namespace $ {
@@ -2604,45 +2775,1009 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $finn_widgets_page__title_finn_app_1 = $mol_type_enforce<
-		string
+	export class $finn_ui_stub_empty extends $mol_paragraph {
+		stub_title( ): string
+		prefix( ): string
+		text( ): string
+		title( ): ReturnType< $finn_ui_stub_empty['stub_title'] >
+	}
+	
+}
+
+//# sourceMappingURL=empty.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $finn_ui_stub_empty extends $.$finn_ui_stub_empty {
+        stub_title(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_paragraph__dom_name_mol_section_1 = $mol_type_enforce<
+		ReturnType< $mol_section['title_dom_name'] >
 		,
-		ReturnType< $finn_widgets_page['title'] >
+		ReturnType< $mol_paragraph['dom_name'] >
 	>
-	type $finn_widgets_page__title_finn_app_2 = $mol_type_enforce<
-		string
+	type $mol_paragraph__title_mol_section_2 = $mol_type_enforce<
+		ReturnType< $mol_section['title'] >
 		,
-		ReturnType< $finn_widgets_page['title'] >
+		ReturnType< $mol_paragraph['title'] >
 	>
-	type $finn_widgets_page__title_finn_app_3 = $mol_type_enforce<
-		string
+	type $mol_view__sub_mol_section_3 = $mol_type_enforce<
+		ReturnType< $mol_section['tools'] >
 		,
-		ReturnType< $finn_widgets_page['title'] >
+		ReturnType< $mol_view['sub'] >
 	>
-	type $finn_widgets_page__title_finn_app_4 = $mol_type_enforce<
-		string
+	type $mol_view__sub_mol_section_4 = $mol_type_enforce<
+		ReturnType< $mol_section['head'] >
 		,
-		ReturnType< $finn_widgets_page['title'] >
+		ReturnType< $mol_view['sub'] >
 	>
-	type $finn_widgets_page__title_finn_app_5 = $mol_type_enforce<
+	type $mol_list__rows_mol_section_5 = $mol_type_enforce<
+		ReturnType< $mol_section['content'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	export class $mol_section extends $mol_list {
+		title_dom_name( ): string
+		Title( ): $mol_paragraph
+		tools( ): readonly(any)[]
+		Tools( ): $mol_view
+		head( ): readonly(any)[]
+		Head( ): $mol_view
+		content( ): readonly(any)[]
+		Content( ): $mol_list
+		level( ): number
+		rows( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=section.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_section extends $.$mol_section {
+        title_dom_name(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_paragraph__title_finn_ui_budget_expanse_value_1 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_value['value_presentation'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	export class $finn_ui_budget_expanse_value extends $mol_view {
+		value_color( next?: string ): string
+		value_presentation( next?: string ): string
+		Value( ): $mol_paragraph
+		value( ): number
+		total( ): number
+		currency( ): string
+		style( ): ({ 
+			color( next?: ReturnType< $finn_ui_budget_expanse_value['value_color'] > ): ReturnType< $finn_ui_budget_expanse_value['value_color'] >,
+		})  & ReturnType< $mol_view['style'] >
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=value.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $finn_ui_budget_expanse_value extends $.$finn_ui_budget_expanse_value {
+        value_presentation(next?: string): string;
+        value_color(next?: string): string;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_icon_check extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=check.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_paragraph__title_finn_ui_budget_income_1 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_income['_income_title'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__event_finn_ui_budget_income_2 = $mol_type_enforce<
+		({ 
+			dblclick( next?: ReturnType< $finn_ui_budget_income['edit_title_click'] > ): ReturnType< $finn_ui_budget_income['edit_title_click'] >,
+		}) 
+		,
+		ReturnType< $mol_paragraph['event'] >
+	>
+	type $finn_ui_budget_income_value__value_finn_ui_budget_income_3 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_income['income_value'] >
+		,
+		ReturnType< $finn_ui_budget_income_value['value'] >
+	>
+	type $mol_button_minor__sub_finn_ui_budget_income_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_string__hint_finn_ui_budget_income_5 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $finn_widgets_page['title'] >
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_string__value_finn_ui_budget_income_6 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_income['edited_title_value'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $finn_ui_button__title_finn_ui_budget_income_7 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_button['title'] >
+	>
+	type $finn_ui_button__icon_finn_ui_budget_income_8 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_income['Editing_title_save_icon'] >
+		,
+		ReturnType< $finn_ui_button['icon'] >
+	>
+	type $finn_ui_button__click_finn_ui_budget_income_9 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_income['save_editing_title'] >
+		,
+		ReturnType< $finn_ui_button['click'] >
+	>
+	type $finn_ui_button__title_finn_ui_budget_income_10 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_button['title'] >
+	>
+	type $finn_ui_button__icon_finn_ui_budget_income_11 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_income['Editing_title_cancel_icon'] >
+		,
+		ReturnType< $finn_ui_button['icon'] >
+	>
+	type $finn_ui_button__click_finn_ui_budget_income_12 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_income['cancel_editing_title'] >
+		,
+		ReturnType< $finn_ui_button['click'] >
+	>
+	type $mol_view__sub_finn_ui_budget_income_13 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $finn_ui_budget_income extends $mol_list {
+		title_editing_mode_active( next?: boolean ): boolean
+		_income_title( ): string
+		edit_title_click( next?: any ): any
+		Title( ): $mol_paragraph
+		income_value( ): number
+		Quota( ): $finn_ui_budget_income_value
+		Income( ): $mol_button_minor
+		edited_title_value( next?: string ): string
+		Editing_title_input( ): $mol_string
+		Editing_title_save_icon( ): $mol_icon_check
+		save_editing_title( next?: any ): any
+		Editing_title_save( ): $finn_ui_button
+		Editing_title_cancel_icon( ): $mol_icon_close
+		cancel_editing_title( next?: any ): any
+		Editing_title_cancel( ): $finn_ui_button
+		Editing_title( ): $mol_view
+		title( ): string
+		value( ): number
+		title_editing_mode( next?: ReturnType< $finn_ui_budget_income['title_editing_mode_active'] > ): ReturnType< $finn_ui_budget_income['title_editing_mode_active'] >
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=income.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $finn_ui_budget_income extends $.$finn_ui_budget_income {
+        edit_title_click(next?: Event): void;
+        save_editing_title(next?: any): void;
+        cancel_editing_title(next?: any): void;
+        _income_title(): string;
+        sub(): readonly (any)[];
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_icon_chevron extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=chevron.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_check_expand extends $mol_check {
+		level_style( ): string
+		expanded( next?: boolean ): boolean
+		expandable( ): boolean
+		Icon( ): $mol_icon_chevron
+		level( ): number
+		style( ): ({ 
+			'paddingLeft': ReturnType< $mol_check_expand['level_style'] >,
+		})  & ReturnType< $mol_check['style'] >
+		checked( next?: ReturnType< $mol_check_expand['expanded'] > ): ReturnType< $mol_check_expand['expanded'] >
+		enabled( ): ReturnType< $mol_check_expand['expandable'] >
+	}
+	
+}
+
+//# sourceMappingURL=expand.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check_expand extends $.$mol_check_expand {
+        level_style(): string;
+        expandable(): boolean;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_check_expand__checked_mol_expander_1 = $mol_type_enforce<
+		ReturnType< $mol_expander['expanded'] >
+		,
+		ReturnType< $mol_check_expand['checked'] >
+	>
+	type $mol_check_expand__expandable_mol_expander_2 = $mol_type_enforce<
+		ReturnType< $mol_expander['expandable'] >
+		,
+		ReturnType< $mol_check_expand['expandable'] >
+	>
+	type $mol_check_expand__label_mol_expander_3 = $mol_type_enforce<
+		ReturnType< $mol_expander['label'] >
+		,
+		ReturnType< $mol_check_expand['label'] >
+	>
+	type $mol_view__sub_mol_expander_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_list__rows_mol_expander_5 = $mol_type_enforce<
+		ReturnType< $mol_expander['content'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	export class $mol_expander extends $mol_list {
+		expanded( next?: boolean ): boolean
+		expandable( ): boolean
+		label( ): readonly(any)[]
+		Trigger( ): $mol_check_expand
+		Tools( ): any
+		Label( ): $mol_view
+		content( ): readonly(any)[]
+		Content( ): $mol_list
+		rows( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=expander.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_expander extends $.$mol_expander {
+        rows(): $mol_view[];
+        expandable(): boolean;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $finn_ui_expander extends $mol_expander {
+	}
+	
+}
+
+//# sourceMappingURL=expander.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_paragraph__title_finn_ui_budget_expanse_1 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse['_expanse_title'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__event_finn_ui_budget_expanse_2 = $mol_type_enforce<
+		({ 
+			dblclick( next?: ReturnType< $finn_ui_budget_expanse['edit_title_click'] > ): ReturnType< $finn_ui_budget_expanse['edit_title_click'] >,
+		}) 
+		,
+		ReturnType< $mol_paragraph['event'] >
+	>
+	type $finn_ui_stub_empty__text_finn_ui_budget_expanse_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_stub_empty['text'] >
+	>
+	type $mol_list__rows_finn_ui_budget_expanse_4 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse['subcats'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $finn_ui_button__title_finn_ui_budget_expanse_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_button['title'] >
+	>
+	type $finn_ui_button__icon_finn_ui_budget_expanse_6 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse['Add_subcat_icon'] >
+		,
+		ReturnType< $finn_ui_button['icon'] >
+	>
+	type $finn_ui_budget_expanse_value__value_finn_ui_budget_expanse_7 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse['value'] >
+		,
+		ReturnType< $finn_ui_budget_expanse_value['value'] >
+	>
+	type $finn_ui_budget_expanse_value__total_finn_ui_budget_expanse_8 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse['total'] >
+		,
+		ReturnType< $finn_ui_budget_expanse_value['total'] >
+	>
+	type $finn_ui_expander__label_finn_ui_budget_expanse_9 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $finn_ui_expander['label'] >
+	>
+	type $finn_ui_expander__content_finn_ui_budget_expanse_10 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $finn_ui_expander['content'] >
+	>
+	type $finn_ui_expander__Tools_finn_ui_budget_expanse_11 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse['Quota'] >
+		,
+		ReturnType< $finn_ui_expander['Tools'] >
+	>
+	type $mol_string__hint_finn_ui_budget_expanse_12 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_string__value_finn_ui_budget_expanse_13 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse['edited_title_value'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $finn_ui_button__title_finn_ui_budget_expanse_14 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_button['title'] >
+	>
+	type $finn_ui_button__icon_finn_ui_budget_expanse_15 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse['Editing_title_save_icon'] >
+		,
+		ReturnType< $finn_ui_button['icon'] >
+	>
+	type $finn_ui_button__click_finn_ui_budget_expanse_16 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse['save_editing_title'] >
+		,
+		ReturnType< $finn_ui_button['click'] >
+	>
+	type $finn_ui_button__title_finn_ui_budget_expanse_17 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_button['title'] >
+	>
+	type $finn_ui_button__icon_finn_ui_budget_expanse_18 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse['Editing_title_cancel_icon'] >
+		,
+		ReturnType< $finn_ui_button['icon'] >
+	>
+	type $finn_ui_button__click_finn_ui_budget_expanse_19 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse['cancel_editing_title'] >
+		,
+		ReturnType< $finn_ui_button['click'] >
+	>
+	type $mol_view__sub_finn_ui_budget_expanse_20 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $finn_ui_budget_expanse extends $mol_list {
+		title_editing_mode_active( next?: boolean ): boolean
+		_expanse_title( ): string
+		edit_title_click( next?: any ): any
+		Title( ): $mol_paragraph
+		Expanses_subcats_is_empty( ): $finn_ui_stub_empty
+		subcats( ): readonly(any)[]
+		Expanse_subcats( ): $mol_list
+		Add_subcat_icon( ): $mol_icon_plus
+		Create_subcat_button( ): $finn_ui_button
+		Quota( ): $finn_ui_budget_expanse_value
+		Expanse( ): $finn_ui_expander
+		edited_title_value( next?: string ): string
+		Editing_title_input( ): $mol_string
+		Editing_title_save_icon( ): $mol_icon_check
+		save_editing_title( next?: any ): any
+		Editing_title_save( ): $finn_ui_button
+		Editing_title_cancel_icon( ): $mol_icon_close
+		cancel_editing_title( next?: any ): any
+		Editing_title_cancel( ): $finn_ui_button
+		Editing_title( ): $mol_view
+		title( ): string
+		value( ): number
+		total( ): number
+		title_editing_mode( next?: ReturnType< $finn_ui_budget_expanse['title_editing_mode_active'] > ): ReturnType< $finn_ui_budget_expanse['title_editing_mode_active'] >
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=expanse.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $finn_ui_budget_expanse extends $.$finn_ui_budget_expanse {
+        edit_title_click(next?: Event): void;
+        save_editing_title(next?: any): void;
+        cancel_editing_title(next?: any): void;
+        _expanse_title(): string;
+        sub(): readonly (any)[];
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_icon_minus extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=minus.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_string__type_mol_number_1 = $mol_type_enforce<
+		ReturnType< $mol_number['type'] >
+		,
+		ReturnType< $mol_string['type'] >
+	>
+	type $mol_string__value_mol_number_2 = $mol_type_enforce<
+		ReturnType< $mol_number['value_string'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_mol_number_3 = $mol_type_enforce<
+		ReturnType< $mol_number['hint'] >
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_string__enabled_mol_number_4 = $mol_type_enforce<
+		ReturnType< $mol_number['string_enabled'] >
+		,
+		ReturnType< $mol_string['enabled'] >
+	>
+	type $mol_string__submit_mol_number_5 = $mol_type_enforce<
+		ReturnType< $mol_number['submit'] >
+		,
+		ReturnType< $mol_string['submit'] >
+	>
+	type $mol_button_minor__event_click_mol_number_6 = $mol_type_enforce<
+		ReturnType< $mol_number['event_dec'] >
+		,
+		ReturnType< $mol_button_minor['event_click'] >
+	>
+	type $mol_button_minor__enabled_mol_number_7 = $mol_type_enforce<
+		ReturnType< $mol_number['dec_enabled'] >
+		,
+		ReturnType< $mol_button_minor['enabled'] >
+	>
+	type $mol_button_minor__sub_mol_number_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_button_minor__event_click_mol_number_9 = $mol_type_enforce<
+		ReturnType< $mol_number['event_inc'] >
+		,
+		ReturnType< $mol_button_minor['event_click'] >
+	>
+	type $mol_button_minor__enabled_mol_number_10 = $mol_type_enforce<
+		ReturnType< $mol_number['inc_enabled'] >
+		,
+		ReturnType< $mol_button_minor['enabled'] >
+	>
+	type $mol_button_minor__sub_mol_number_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	export class $mol_number extends $mol_view {
+		precision( ): number
+		type( ): string
+		value_string( next?: string ): string
+		hint( ): string
+		string_enabled( ): ReturnType< $mol_number['enabled'] >
+		submit( next?: any ): any
+		String( ): $mol_string
+		event_dec( next?: any ): any
+		dec_enabled( ): ReturnType< $mol_number['enabled'] >
+		dec_icon( ): $mol_icon_minus
+		Dec( ): $mol_button_minor
+		event_inc( next?: any ): any
+		inc_enabled( ): ReturnType< $mol_number['enabled'] >
+		inc_icon( ): $mol_icon_plus
+		Inc( ): $mol_button_minor
+		precision_view( ): ReturnType< $mol_number['precision'] >
+		precision_change( ): ReturnType< $mol_number['precision'] >
+		value_min( ): number
+		value_max( ): number
+		value( next?: number ): number
+		enabled( ): boolean
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=number.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_number extends $.$mol_number {
+        value_limited(val?: number): number;
+        event_dec(next?: Event): void;
+        event_inc(next?: Event): void;
+        round(val: number): string;
+        value_string(next?: string): string;
+        dec_enabled(): boolean;
+        inc_enabled(): boolean;
+    }
+}
+
+declare namespace $ {
+
+	type $mol_paragraph__title_finn_ui_budget_expanse_subcat_1 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['_subcat_title'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__event_finn_ui_budget_expanse_subcat_2 = $mol_type_enforce<
+		({ 
+			dblclick( next?: ReturnType< $finn_ui_budget_expanse_subcat['edit_title_click'] > ): ReturnType< $finn_ui_budget_expanse_subcat['edit_title_click'] >,
+		}) 
+		,
+		ReturnType< $mol_paragraph['event'] >
+	>
+	type $finn_ui_budget_expanse_value__value_finn_ui_budget_expanse_subcat_3 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['value'] >
+		,
+		ReturnType< $finn_ui_budget_expanse_value['value'] >
+	>
+	type $finn_ui_budget_expanse_value__total_finn_ui_budget_expanse_subcat_4 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['_subcat_total'] >
+		,
+		ReturnType< $finn_ui_budget_expanse_value['total'] >
+	>
+	type $finn_ui_budget_expanse_value__event_finn_ui_budget_expanse_subcat_5 = $mol_type_enforce<
+		({ 
+			dblclick( next?: ReturnType< $finn_ui_budget_expanse_subcat['edit_total_click'] > ): ReturnType< $finn_ui_budget_expanse_subcat['edit_total_click'] >,
+		}) 
+		,
+		ReturnType< $finn_ui_budget_expanse_value['event'] >
+	>
+	type $mol_button_minor__sub_finn_ui_budget_expanse_subcat_6 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_string__hint_finn_ui_budget_expanse_subcat_7 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_string__value_finn_ui_budget_expanse_subcat_8 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['edited_title_value'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $finn_ui_button__title_finn_ui_budget_expanse_subcat_9 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_button['title'] >
+	>
+	type $finn_ui_button__icon_finn_ui_budget_expanse_subcat_10 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['Editing_title_save_icon'] >
+		,
+		ReturnType< $finn_ui_button['icon'] >
+	>
+	type $finn_ui_button__click_finn_ui_budget_expanse_subcat_11 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['save_editing_title'] >
+		,
+		ReturnType< $finn_ui_button['click'] >
+	>
+	type $finn_ui_button__title_finn_ui_budget_expanse_subcat_12 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_button['title'] >
+	>
+	type $finn_ui_button__icon_finn_ui_budget_expanse_subcat_13 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['Editing_title_cancel_icon'] >
+		,
+		ReturnType< $finn_ui_button['icon'] >
+	>
+	type $finn_ui_button__click_finn_ui_budget_expanse_subcat_14 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['cancel_editing_title'] >
+		,
+		ReturnType< $finn_ui_button['click'] >
+	>
+	type $mol_view__sub_finn_ui_budget_expanse_subcat_15 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_number__value_min_finn_ui_budget_expanse_subcat_16 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_number['value_min'] >
+	>
+	type $mol_number__precision_change_finn_ui_budget_expanse_subcat_17 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_number['precision_change'] >
+	>
+	type $mol_number__hint_finn_ui_budget_expanse_subcat_18 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_number['hint'] >
+	>
+	type $mol_number__value_finn_ui_budget_expanse_subcat_19 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['edited_total_value'] >
+		,
+		ReturnType< $mol_number['value'] >
+	>
+	type $finn_ui_button__title_finn_ui_budget_expanse_subcat_20 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_button['title'] >
+	>
+	type $finn_ui_button__icon_finn_ui_budget_expanse_subcat_21 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['Editing_total_save_icon'] >
+		,
+		ReturnType< $finn_ui_button['icon'] >
+	>
+	type $finn_ui_button__click_finn_ui_budget_expanse_subcat_22 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['save_editing_total'] >
+		,
+		ReturnType< $finn_ui_button['click'] >
+	>
+	type $finn_ui_button__title_finn_ui_budget_expanse_subcat_23 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_button['title'] >
+	>
+	type $finn_ui_button__icon_finn_ui_budget_expanse_subcat_24 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['Editing_total_cancel_icon'] >
+		,
+		ReturnType< $finn_ui_button['icon'] >
+	>
+	type $finn_ui_button__click_finn_ui_budget_expanse_subcat_25 = $mol_type_enforce<
+		ReturnType< $finn_ui_budget_expanse_subcat['cancel_editing_total'] >
+		,
+		ReturnType< $finn_ui_button['click'] >
+	>
+	type $mol_view__sub_finn_ui_budget_expanse_subcat_26 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $finn_ui_budget_expanse_subcat extends $mol_list {
+		title_editing_mode_active( next?: boolean ): boolean
+		total_editing_mode_active( next?: boolean ): boolean
+		_subcat_title( ): string
+		edit_title_click( next?: any ): any
+		Title( ): $mol_paragraph
+		_subcat_total( ): number
+		edit_total_click( next?: any ): any
+		Quota( ): $finn_ui_budget_expanse_value
+		Subcat( ): $mol_button_minor
+		edited_title_value( next?: string ): string
+		Editing_title_input( ): $mol_string
+		Editing_title_save_icon( ): $mol_icon_check
+		save_editing_title( next?: any ): any
+		Editing_title_save( ): $finn_ui_button
+		Editing_title_cancel_icon( ): $mol_icon_close
+		cancel_editing_title( next?: any ): any
+		Editing_title_cancel( ): $finn_ui_button
+		Editing_title( ): $mol_view
+		edited_total_value( next?: number ): number
+		Editing_total_input( ): $mol_number
+		Editing_total_save_icon( ): $mol_icon_check
+		save_editing_total( next?: any ): any
+		Editing_total_save( ): $finn_ui_button
+		Editing_total_cancel_icon( ): $mol_icon_close
+		cancel_editing_total( next?: any ): any
+		Editing_total_cancel( ): $finn_ui_button
+		Editing_total( ): $mol_view
+		title( ): string
+		value( ): number
+		total( ): number
+		title_editing_mode( next?: ReturnType< $finn_ui_budget_expanse_subcat['title_editing_mode_active'] > ): ReturnType< $finn_ui_budget_expanse_subcat['title_editing_mode_active'] >
+		total_editing_mode( next?: ReturnType< $finn_ui_budget_expanse_subcat['total_editing_mode_active'] > ): ReturnType< $finn_ui_budget_expanse_subcat['total_editing_mode_active'] >
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=subcat.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $finn_ui_budget_expanse_subcat extends $.$finn_ui_budget_expanse_subcat {
+        edit_title_click(next?: Event): void;
+        save_editing_title(next?: any): void;
+        cancel_editing_title(next?: any): void;
+        _subcat_title(): string;
+        edit_total_click(next?: Event): void;
+        save_editing_total(next?: any): void;
+        cancel_editing_total(next?: any): void;
+        edited_total_value(next?: number): number;
+        _subcat_total(): number;
+        sub(): readonly (any)[];
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $finn_ui_header__title_finn_app_budgets_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_header['title'] >
+	>
+	type $finn_ui_budget_income_value__value_finn_app_budgets_2 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['total_income_quota'] >
+		,
+		ReturnType< $finn_ui_budget_income_value['value'] >
+	>
+	type $mol_view__sub_finn_app_budgets_3 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $finn_ui_button__title_finn_app_budgets_4 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_button['title'] >
+	>
+	type $finn_ui_button__icon_finn_app_budgets_5 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['Add_source_icon'] >
+		,
+		ReturnType< $finn_ui_button['icon'] >
+	>
+	type $finn_ui_stub_empty__text_finn_app_budgets_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_stub_empty['text'] >
+	>
+	type $mol_section__head_finn_app_budgets_7 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['income_head'] >
+		,
+		ReturnType< $mol_section['head'] >
+	>
+	type $mol_section__tools_finn_app_budgets_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_section['tools'] >
+	>
+	type $mol_section__content_finn_app_budgets_9 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['incomes_list'] >
+		,
+		ReturnType< $mol_section['content'] >
+	>
+	type $finn_ui_header__title_finn_app_budgets_10 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_header['title'] >
+	>
+	type $finn_ui_budget_expanse_value__value_finn_app_budgets_11 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['total_expanse_value'] >
+		,
+		ReturnType< $finn_ui_budget_expanse_value['value'] >
+	>
+	type $finn_ui_budget_expanse_value__total_finn_app_budgets_12 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['total_expanse_total'] >
+		,
+		ReturnType< $finn_ui_budget_expanse_value['total'] >
+	>
+	type $mol_view__sub_finn_app_budgets_13 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $finn_ui_button__title_finn_app_budgets_14 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_button['title'] >
+	>
+	type $finn_ui_button__icon_finn_app_budgets_15 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['Add_category_icon'] >
+		,
+		ReturnType< $finn_ui_button['icon'] >
+	>
+	type $finn_ui_stub_empty__text_finn_app_budgets_16 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_stub_empty['text'] >
+	>
+	type $mol_section__head_finn_app_budgets_17 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['expanse_head'] >
+		,
+		ReturnType< $mol_section['head'] >
+	>
+	type $mol_section__tools_finn_app_budgets_18 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_section['tools'] >
+	>
+	type $mol_section__content_finn_app_budgets_19 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['expanses_list'] >
+		,
+		ReturnType< $mol_section['content'] >
+	>
+	type $finn_ui_stub_empty__text_finn_app_budgets_20 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_stub_empty['text'] >
+	>
+	type $finn_ui_budget_income__title_finn_app_budgets_21 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['income_title'] >
+		,
+		ReturnType< $finn_ui_budget_income['title'] >
+	>
+	type $finn_ui_budget_income__value_finn_app_budgets_22 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['income_value'] >
+		,
+		ReturnType< $finn_ui_budget_income['value'] >
+	>
+	type $finn_ui_budget_expanse__title_finn_app_budgets_23 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['expanse_title'] >
+		,
+		ReturnType< $finn_ui_budget_expanse['title'] >
+	>
+	type $finn_ui_budget_expanse__subcats_finn_app_budgets_24 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['expanse_subcats'] >
+		,
+		ReturnType< $finn_ui_budget_expanse['subcats'] >
+	>
+	type $finn_ui_budget_expanse_subcat__title_finn_app_budgets_25 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['subcat_title'] >
+		,
+		ReturnType< $finn_ui_budget_expanse_subcat['title'] >
+	>
+	type $finn_ui_budget_expanse_subcat__value_finn_app_budgets_26 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['subcat_value'] >
+		,
+		ReturnType< $finn_ui_budget_expanse_subcat['value'] >
+	>
+	type $finn_ui_budget_expanse_subcat__total_finn_app_budgets_27 = $mol_type_enforce<
+		ReturnType< $finn_app_budgets['subcat_total'] >
+		,
+		ReturnType< $finn_ui_budget_expanse_subcat['total'] >
+	>
+	export class $finn_app_budgets extends $finn_ui_page {
+		Income_title_text( ): $finn_ui_header
+		total_income_quota( ): number
+		Income_quota( ): $finn_ui_budget_income_value
+		Income_title( ): $mol_view
+		income_head( ): readonly(any)[]
+		Add_source_icon( ): $mol_icon_plus
+		Add_source( ): $finn_ui_button
+		Incomes_is_empty( ): $finn_ui_stub_empty
+		incomes_list( ): readonly(any)[]
+		Incomes( ): $mol_section
+		Expanse_title_text( ): $finn_ui_header
+		total_expanse_value( ): number
+		total_expanse_total( ): number
+		Expanse_quota( ): $finn_ui_budget_expanse_value
+		Expanse_title( ): $mol_view
+		expanse_head( ): readonly(any)[]
+		Add_category_icon( ): $mol_icon_plus
+		Add_category( ): $finn_ui_button
+		Expanses_is_empty( ): $finn_ui_stub_empty
+		expanses_list( ): readonly(any)[]
+		Expanses( ): $mol_section
+		income_title( id: any): string
+		income_value( id: any): number
+		expanse_title( id: any): string
+		Expanses_subcats_is_empty( ): $finn_ui_stub_empty
+		expanse_subcats( id: any): readonly(any)[]
+		subcat_title( id: any): string
+		subcat_value( id: any): number
+		subcat_total( id: any): number
+		title( ): string
+		body( ): readonly(any)[]
+		Income_source( id: any): $finn_ui_budget_income
+		Expance_category( id: any): $finn_ui_budget_expanse
+		Expanse_subcat( id: any): $finn_ui_budget_expanse_subcat
+	}
+	
+}
+
+//# sourceMappingURL=budgets.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $finn_app_budgets extends $.$finn_app_budgets {
+        income_head(): readonly (any)[];
+        expanse_head(): readonly (any)[];
+        incomes_list(): readonly (any)[];
+        expanses_list(): readonly (any)[];
+        expanse_subcats(id: any): readonly (any)[];
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_lights_toggle__Icon_finn_app_1 = $mol_type_enforce<
+		ReturnType< $finn_app['Lights_icon'] >
+		,
+		ReturnType< $mol_lights_toggle['Icon'] >
+	>
+	type $finn_ui_page__title_finn_app_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_page['title'] >
+	>
+	type $finn_ui_page__title_finn_app_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_page['title'] >
+	>
+	type $finn_ui_page__title_finn_app_4 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $finn_ui_page['title'] >
 	>
 	export class $finn_app extends $mol_book2_catalog {
-		Dashboard( ): $finn_widgets_page
-		Transactions( ): $finn_widgets_page
-		Calendar( ): $finn_widgets_page
-		Accounts( ): $finn_widgets_page
-		Categories( ): $finn_widgets_page
+		Theme( ): $mol_theme_auto
+		Lights_icon( ): $mol_icon_brightness_4
+		Lighter( ): $mol_lights_toggle
+		Transactions( ): $finn_ui_page
+		Accounts( ): $finn_ui_page
+		Budgets( ): $finn_app_budgets
+		Calendar( ): $finn_ui_page
 		title( ): string
 		menu_title( ): string
+		plugins( ): readonly(any)[]
+		menu_tools( ): readonly(any)[]
 		spreads( ): ({ 
-			'dashboard': ReturnType< $finn_app['Dashboard'] >,
 			'transactions': ReturnType< $finn_app['Transactions'] >,
-			'calendar': ReturnType< $finn_app['Calendar'] >,
 			'accounts': ReturnType< $finn_app['Accounts'] >,
-			'categories': ReturnType< $finn_app['Categories'] >,
+			'budgets': ReturnType< $finn_app['Budgets'] >,
+			'calendar': ReturnType< $finn_app['Calendar'] >,
 		}) 
 		Placeholder( ): any
 	}

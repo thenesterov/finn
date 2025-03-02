@@ -7501,7 +7501,223 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$finn_widgets_page) = class $finn_widgets_page extends ($.$mol_page) {};
+	($.$mol_theme_auto) = class $mol_theme_auto extends ($.$mol_plugin) {
+		theme(){
+			return "";
+		}
+		attr(){
+			return {"mol_theme": (this.theme())};
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_media extends $mol_object2 {
+        static match(query, next) {
+            if (next !== undefined)
+                return next;
+            const res = this.$.$mol_dom_context.matchMedia?.(query) ?? {};
+            res.onchange = () => this.match(query, res.matches);
+            return res.matches;
+        }
+    }
+    __decorate([
+        $mol_mem_key
+    ], $mol_media, "match", null);
+    $.$mol_media = $mol_media;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    function parse(theme) {
+        if (theme === 'true')
+            return true;
+        if (theme === 'false')
+            return false;
+        return null;
+    }
+    function $mol_lights(next) {
+        const arg = parse(this.$mol_state_arg.value('mol_lights'));
+        const base = this.$mol_media.match('(prefers-color-scheme: light)');
+        if (next === undefined) {
+            return arg ?? this.$mol_state_local.value('$mol_lights') ?? base;
+        }
+        else {
+            if (arg === null) {
+                this.$mol_state_local.value('$mol_lights', next === base ? null : next);
+            }
+            else {
+                this.$mol_state_arg.value('mol_lights', String(next));
+            }
+            return next;
+        }
+    }
+    $.$mol_lights = $mol_lights;
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_theme_auto extends $.$mol_theme_auto {
+            theme() {
+                return this.$.$mol_lights() ? '$mol_theme_light' : '$mol_theme_dark';
+            }
+        }
+        $$.$mol_theme_auto = $mol_theme_auto;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_brightness_4) = class $mol_icon_brightness_4 extends ($.$mol_icon) {
+		path(){
+			return "M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_check) = class $mol_check extends ($.$mol_button_minor) {
+		checked(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		aria_checked(){
+			return "false";
+		}
+		aria_role(){
+			return "checkbox";
+		}
+		Icon(){
+			return null;
+		}
+		title(){
+			return "";
+		}
+		Title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.title())]);
+			return obj;
+		}
+		label(){
+			return [(this.Title())];
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"mol_check_checked": (this.checked()), 
+				"aria-checked": (this.aria_checked()), 
+				"role": (this.aria_role())
+			};
+		}
+		sub(){
+			return [(this.Icon()), (this.label())];
+		}
+	};
+	($mol_mem(($.$mol_check.prototype), "checked"));
+	($mol_mem(($.$mol_check.prototype), "Title"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_maybe(value) {
+        return (value == null) ? [] : [value];
+    }
+    $.$mol_maybe = $mol_maybe;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/check.css", "[mol_check] {\n\tflex: 0 0 auto;\n\tjustify-content: flex-start;\n\talign-content: center;\n\t/* align-items: flex-start; */\n\tborder: none;\n\tfont-weight: inherit;\n\tbox-shadow: none;\n\ttext-align: left;\n\tdisplay: inline-flex;\n\tflex-wrap: nowrap;\n}\n\n[mol_check_title] {\n\tflex-shrink: 1;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_check extends $.$mol_check {
+            click(next) {
+                if (next?.defaultPrevented)
+                    return;
+                this.checked(!this.checked());
+                if (next)
+                    next.preventDefault();
+            }
+            sub() {
+                return [
+                    ...$mol_maybe(this.Icon()),
+                    ...this.label(),
+                ];
+            }
+            label() {
+                return this.title() ? super.label() : [];
+            }
+            aria_checked() {
+                return String(this.checked());
+            }
+        }
+        $$.$mol_check = $mol_check;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_check_icon) = class $mol_check_icon extends ($.$mol_check) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/icon/icon.view.css", "[mol_check_icon]:where([mol_check_checked]) {\n\tcolor: var(--mol_theme_current);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_lights_toggle) = class $mol_lights_toggle extends ($.$mol_check_icon) {
+		Lights_icon(){
+			const obj = new this.$.$mol_icon_brightness_4();
+			return obj;
+		}
+		lights(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		Icon(){
+			return (this.Lights_icon());
+		}
+		hint(){
+			return (this.$.$mol_locale.text("$mol_lights_toggle_hint"));
+		}
+		checked(next){
+			return (this.lights(next));
+		}
+	};
+	($mol_mem(($.$mol_lights_toggle.prototype), "Lights_icon"));
+	($mol_mem(($.$mol_lights_toggle.prototype), "lights"));
 
 
 ;
@@ -7511,34 +7727,1594 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("finn/widgets/page.view.css", "[finn_widgets_page] {\n\tflex-basis: 50rem;\n}\n");
+    var $$;
+    (function ($$) {
+        class $mol_lights_toggle extends $.$mol_lights_toggle {
+            lights(next) {
+                return this.$.$mol_lights(next);
+            }
+        }
+        $$.$mol_lights_toggle = $mol_lights_toggle;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$finn_ui_page) = class $finn_ui_page extends ($.$mol_page) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("finn/ui/page/page.view.css", "[finn_ui_page] {\n\tflex-basis: 50rem;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$finn_ui_header) = class $finn_ui_header extends ($.$mol_paragraph) {
+		dom_name(){
+			return "h3";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$finn_ui_budget_income_value) = class $finn_ui_budget_income_value extends ($.$mol_view) {
+		value_color(next){
+			if(next !== undefined) return next;
+			return "var(--mol_theme_shade)";
+		}
+		value_presentation(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Value(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = (next) => ((this.value_presentation()));
+			return obj;
+		}
+		value(){
+			return 0;
+		}
+		currency(){
+			return "₽";
+		}
+		style(){
+			return {...(super.style()), "color": (this.value_color())};
+		}
+		sub(){
+			return [(this.Value())];
+		}
+	};
+	($mol_mem(($.$finn_ui_budget_income_value.prototype), "value_color"));
+	($mol_mem(($.$finn_ui_budget_income_value.prototype), "value_presentation"));
+	($mol_mem(($.$finn_ui_budget_income_value.prototype), "Value"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $finn_ui_budget_income_value extends $.$finn_ui_budget_income_value {
+            value_presentation(next) {
+                const prettified_value = this.value().toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                if (this.value() > 0) {
+                    return `+ ${prettified_value} ${this.currency()}`;
+                }
+                else {
+                    return `${prettified_value} ${this.currency()}`;
+                }
+            }
+            value_color(next) {
+                if (this.value() > 0) {
+                    return `var(--mol_theme_control)`;
+                }
+                else {
+                    return `var(--mol_theme_shade)`;
+                }
+            }
+        }
+        $$.$finn_ui_budget_income_value = $finn_ui_budget_income_value;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_plus) = class $mol_icon_plus extends ($.$mol_icon) {
+		path(){
+			return "M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$finn_ui_button) = class $finn_ui_button extends ($.$mol_button_minor) {
+		icon(){
+			return null;
+		}
+	};
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $finn_ui_button extends $.$finn_ui_button {
+            sub() {
+                if (this.icon()) {
+                    return [this.icon(), this.title()];
+                }
+                return [this.title()];
+            }
+        }
+        $$.$finn_ui_button = $finn_ui_button;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("finn/ui/button/button.view.css", "[finn_ui_button] {\n\tbackground: var(--mol_theme_hover);\n\tcolor: var(--mol_theme_text);\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$finn_ui_stub_empty) = class $finn_ui_stub_empty extends ($.$mol_paragraph) {
+		stub_title(){
+			return "";
+		}
+		prefix(){
+			return "Здесь пока пусто. ";
+		}
+		text(){
+			return "";
+		}
+		title(){
+			return (this.stub_title());
+		}
+	};
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $finn_ui_stub_empty extends $.$finn_ui_stub_empty {
+            stub_title() {
+                return this.prefix() + this.text();
+            }
+        }
+        $$.$finn_ui_stub_empty = $finn_ui_stub_empty;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("finn/ui/stub/empty/empty.view.css", "[finn_ui_stub_empty] {\n\tcolor: var(--mol_theme_shade);\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$mol_section) = class $mol_section extends ($.$mol_list) {
+		title_dom_name(){
+			return "h1";
+		}
+		Title(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.dom_name) = () => ((this.title_dom_name()));
+			(obj.title) = () => ((this.title()));
+			return obj;
+		}
+		tools(){
+			return [];
+		}
+		Tools(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ((this.tools()));
+			return obj;
+		}
+		head(){
+			return [(this.Title()), (this.Tools())];
+		}
+		Head(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ((this.head()));
+			return obj;
+		}
+		content(){
+			return [];
+		}
+		Content(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ((this.content()));
+			return obj;
+		}
+		level(){
+			return 1;
+		}
+		rows(){
+			return [(this.Head()), (this.Content())];
+		}
+	};
+	($mol_mem(($.$mol_section.prototype), "Title"));
+	($mol_mem(($.$mol_section.prototype), "Tools"));
+	($mol_mem(($.$mol_section.prototype), "Head"));
+	($mol_mem(($.$mol_section.prototype), "Content"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_section extends $.$mol_section {
+            title_dom_name() {
+                return 'h' + this.level();
+            }
+        }
+        $$.$mol_section = $mol_section;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/section/section.view.css", "[mol_section_head] {\n\tjustify-content: space-between;\n\talign-items: flex-end;\n\tflex-wrap: wrap;\n}\n\n[mol_section_title] {\n\tpadding: var(--mol_gap_text);\n\ttext-shadow: 0 0;\n\tfont-weight: normal;\n}\n\n[mol_section_title]:where(h1) {\n\tfont-size: 1.5rem;\n}\n\n[mol_section_title]:where(h2) {\n\tfont-size: 1.5rem;\n\tfont-style: italic;\n}\n\n[mol_section_title]:where(h3) {\n\tfont-size: 1.25rem;\n}\n\n[mol_section_title]:where(h4) {\n\tfont-size: 1.25rem;\n\tfont-style: italic;\n}\n\n[mol_section_title]:where(h5) {\n\tfont-size: 1rem;\n}\n\n[mol_section_title]:where(h6) {\n\tfont-size: 1rem;\n\tfont-style: italic;\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$finn_ui_budget_expanse_value) = class $finn_ui_budget_expanse_value extends ($.$mol_view) {
+		value_color(next){
+			if(next !== undefined) return next;
+			return "var(--mol_theme_shade)";
+		}
+		value_presentation(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Value(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = (next) => ((this.value_presentation()));
+			return obj;
+		}
+		value(){
+			return 0;
+		}
+		total(){
+			return 0;
+		}
+		currency(){
+			return "₽";
+		}
+		style(){
+			return {...(super.style()), "color": (this.value_color())};
+		}
+		sub(){
+			return [(this.Value())];
+		}
+	};
+	($mol_mem(($.$finn_ui_budget_expanse_value.prototype), "value_color"));
+	($mol_mem(($.$finn_ui_budget_expanse_value.prototype), "value_presentation"));
+	($mol_mem(($.$finn_ui_budget_expanse_value.prototype), "Value"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $finn_ui_budget_expanse_value extends $.$finn_ui_budget_expanse_value {
+            value_presentation(next) {
+                let presentation = `${this.value()} / ${this.total()} ${this.currency()}`;
+                if (this.value() > this.total()) {
+                    presentation = "‼️ " + presentation;
+                }
+                return presentation;
+            }
+            value_color(next) {
+                const control_color = "var(--mol_theme_control)";
+                const shade_color = "var(--mol_theme_shade)";
+                const red_color = "var(--mol_theme_current)";
+                if (this.total() == 0) {
+                    if (this.value() == 0) {
+                        return shade_color;
+                    }
+                    return red_color;
+                }
+                const percent = (this.value() / this.total()) * 100;
+                if (percent >= 100) {
+                    return red_color;
+                }
+                const result = `color-mix(in oklab, ${control_color} ${100 - percent}%, ${red_color} ${percent}%)`;
+                return result;
+            }
+        }
+        $$.$finn_ui_budget_expanse_value = $finn_ui_budget_expanse_value;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_check) = class $mol_icon_check extends ($.$mol_icon) {
+		path(){
+			return "M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$finn_ui_budget_income) = class $finn_ui_budget_income extends ($.$mol_list) {
+		title_editing_mode_active(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		_income_title(){
+			return "";
+		}
+		edit_title_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Title(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this._income_title()));
+			(obj.event) = () => ({"dblclick": (next) => (this.edit_title_click(next))});
+			return obj;
+		}
+		income_value(){
+			return 0;
+		}
+		Quota(){
+			const obj = new this.$.$finn_ui_budget_income_value();
+			(obj.value) = () => ((this.income_value()));
+			return obj;
+		}
+		Income(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.sub) = () => ([(this.Title()), (this.Quota())]);
+			return obj;
+		}
+		edited_title_value(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Editing_title_input(){
+			const obj = new this.$.$mol_string();
+			(obj.hint) = () => ("Введите новое название");
+			(obj.value) = (next) => ((this.edited_title_value(next)));
+			return obj;
+		}
+		Editing_title_save_icon(){
+			const obj = new this.$.$mol_icon_check();
+			return obj;
+		}
+		save_editing_title(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Editing_title_save(){
+			const obj = new this.$.$finn_ui_button();
+			(obj.title) = () => ("");
+			(obj.icon) = () => ((this.Editing_title_save_icon()));
+			(obj.click) = (next) => ((this.save_editing_title(next)));
+			return obj;
+		}
+		Editing_title_cancel_icon(){
+			const obj = new this.$.$mol_icon_close();
+			return obj;
+		}
+		cancel_editing_title(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Editing_title_cancel(){
+			const obj = new this.$.$finn_ui_button();
+			(obj.title) = () => ("");
+			(obj.icon) = () => ((this.Editing_title_cancel_icon()));
+			(obj.click) = (next) => ((this.cancel_editing_title(next)));
+			return obj;
+		}
+		Editing_title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Editing_title_input()), 
+				(this.Editing_title_save()), 
+				(this.Editing_title_cancel())
+			]);
+			return obj;
+		}
+		title(){
+			return "";
+		}
+		value(){
+			return 0;
+		}
+		title_editing_mode(next){
+			if(next !== undefined) return next;
+			return (this.title_editing_mode_active());
+		}
+		sub(){
+			return [(this.Income()), (this.Editing_title())];
+		}
+	};
+	($mol_mem(($.$finn_ui_budget_income.prototype), "title_editing_mode_active"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "edit_title_click"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "Title"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "Quota"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "Income"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "edited_title_value"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "Editing_title_input"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "Editing_title_save_icon"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "save_editing_title"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "Editing_title_save"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "Editing_title_cancel_icon"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "cancel_editing_title"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "Editing_title_cancel"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "Editing_title"));
+	($mol_mem(($.$finn_ui_budget_income.prototype), "title_editing_mode"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("finn/ui/gap/gap.css", ":root {\n\t--finn_ui_gap_half: calc(var(--mol_gap_block) / 2);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $finn_ui_budget_income extends $.$finn_ui_budget_income {
+            edit_title_click(next) {
+                this.title_editing_mode_active(true);
+            }
+            save_editing_title(next) {
+                this.title_editing_mode_active(false);
+            }
+            cancel_editing_title(next) {
+                this.title_editing_mode_active(false);
+            }
+            _income_title() {
+                if (this.title_editing_mode_active() && this.edited_title_value() != "") {
+                    return this.edited_title_value();
+                }
+                return this.title();
+            }
+            sub() {
+                if (!this.title_editing_mode_active()) {
+                    return super.sub().filter(item => item != this.Editing_title());
+                }
+                return super.sub();
+            }
+        }
+        $$.$finn_ui_budget_income = $finn_ui_budget_income;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("finn/ui/budget/income/income.view.css", "[finn_ui_budget_income_income] {\n\tcolor: var(--mol_theme_text);\n\tbackground: var(--mol_theme_hover);\n\tjustify-content: space-between;\n\tborder: 1px solid var(--mol_theme_line);\n\twidth: 100%;\n\tflex-wrap: wrap;\n}\n\n[finn_ui_budget_income_income]:hover {\n\tbox-shadow: none;\n}\n\n[finn_ui_budget_income_income]:active {\n\tcolor: var(--mol_theme_text);\n}\n\n[finn_ui_budget_income_editing_title] {\n\tmargin-top: var(--finn_ui_gap_half);\n}\n\n[finn_ui_budget_income_editing_title_save] {\n\tmargin: 0 var(--finn_ui_gap_half);\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_chevron) = class $mol_icon_chevron extends ($.$mol_icon) {
+		path(){
+			return "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_check_expand) = class $mol_check_expand extends ($.$mol_check) {
+		level_style(){
+			return "0px";
+		}
+		expanded(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		expandable(){
+			return false;
+		}
+		Icon(){
+			const obj = new this.$.$mol_icon_chevron();
+			return obj;
+		}
+		level(){
+			return 0;
+		}
+		style(){
+			return {...(super.style()), "paddingLeft": (this.level_style())};
+		}
+		checked(next){
+			return (this.expanded(next));
+		}
+		enabled(){
+			return (this.expandable());
+		}
+	};
+	($mol_mem(($.$mol_check_expand.prototype), "expanded"));
+	($mol_mem(($.$mol_check_expand.prototype), "Icon"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_check_expand extends $.$mol_check_expand {
+            level_style() {
+                return `${this.level() * 1 - 1}rem`;
+            }
+            expandable() {
+                return this.expanded() !== null;
+            }
+        }
+        $$.$mol_check_expand = $mol_check_expand;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/expand/expand.view.css", "[mol_check_expand] {\n\tmin-width: 20px;\n}\n\n:where([mol_check_expand][disabled]) [mol_check_expand_icon] {\n\tvisibility: hidden;\n}\n\n[mol_check_expand_icon] {\n\tbox-shadow: none;\n\tmargin-left: -0.375rem;\n}\n[mol_check_expand_icon] {\n\ttransform: rotateZ(0deg);\n}\n\n:where([mol_check_checked]) [mol_check_expand_icon] {\n\ttransform: rotateZ(90deg);\n}\n\n[mol_check_expand_icon] {\n\tvertical-align: text-top;\n}\n\n[mol_check_expand_label] {\n\tmargin-left: 0;\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$mol_expander) = class $mol_expander extends ($.$mol_list) {
+		expanded(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		expandable(){
+			return true;
+		}
+		label(){
+			return [(this.title())];
+		}
+		Trigger(){
+			const obj = new this.$.$mol_check_expand();
+			(obj.checked) = (next) => ((this.expanded(next)));
+			(obj.expandable) = () => ((this.expandable()));
+			(obj.label) = () => ((this.label()));
+			return obj;
+		}
+		Tools(){
+			return null;
+		}
+		Label(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Trigger()), (this.Tools())]);
+			return obj;
+		}
+		content(){
+			return [];
+		}
+		Content(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ((this.content()));
+			return obj;
+		}
+		rows(){
+			return [(this.Label()), (this.Content())];
+		}
+	};
+	($mol_mem(($.$mol_expander.prototype), "expanded"));
+	($mol_mem(($.$mol_expander.prototype), "Trigger"));
+	($mol_mem(($.$mol_expander.prototype), "Label"));
+	($mol_mem(($.$mol_expander.prototype), "Content"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_expander extends $.$mol_expander {
+            rows() {
+                return [
+                    this.Label(),
+                    ...this.expanded() ? [this.Content()] : []
+                ];
+            }
+            expandable() {
+                return this.content().length > 0;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_expander.prototype, "rows", null);
+        $$.$mol_expander = $mol_expander;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/expander/expander.view.css", "[mol_expander] {\n\tflex-direction: column;\n}\n\n[mol_expander_label] {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tborder-radius: var(--mol_gap_round);\n}\n\n[mol_expander_trigger] {\n\tflex: auto;\n\tposition: relative;\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$finn_ui_expander) = class $finn_ui_expander extends ($.$mol_expander) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("finn/ui/expander/expander.view.css", "[finn_ui_expander] {\n\tbackground: var(--mol_theme_hover);\n\tborder-radius: var(--mol_gap_round);\n}\n\n[finn_ui_expander] [mol_button_typed]:hover {\n\tbox-shadow: none;\n}\n\n[finn_ui_expander_content] {\n\tpadding: var(--mol_gap_text);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$finn_ui_budget_expanse) = class $finn_ui_budget_expanse extends ($.$mol_list) {
+		title_editing_mode_active(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		_expanse_title(){
+			return "";
+		}
+		edit_title_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Title(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this._expanse_title()));
+			(obj.event) = () => ({"dblclick": (next) => (this.edit_title_click(next))});
+			return obj;
+		}
+		Expanses_subcats_is_empty(){
+			const obj = new this.$.$finn_ui_stub_empty();
+			(obj.text) = () => ("Создайте первую подкатегорию расхода, нажав кнопку ниже");
+			return obj;
+		}
+		subcats(){
+			return [(this.Expanses_subcats_is_empty())];
+		}
+		Expanse_subcats(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ((this.subcats()));
+			return obj;
+		}
+		Add_subcat_icon(){
+			const obj = new this.$.$mol_icon_plus();
+			return obj;
+		}
+		Create_subcat_button(){
+			const obj = new this.$.$finn_ui_button();
+			(obj.title) = () => ("Добавить подкатегорию");
+			(obj.icon) = () => ((this.Add_subcat_icon()));
+			return obj;
+		}
+		Quota(){
+			const obj = new this.$.$finn_ui_budget_expanse_value();
+			(obj.value) = () => ((this.value()));
+			(obj.total) = () => ((this.total()));
+			return obj;
+		}
+		Expanse(){
+			const obj = new this.$.$finn_ui_expander();
+			(obj.label) = () => ([(this.Title())]);
+			(obj.content) = () => ([(this.Expanse_subcats()), (this.Create_subcat_button())]);
+			(obj.Tools) = () => ((this.Quota()));
+			return obj;
+		}
+		edited_title_value(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Editing_title_input(){
+			const obj = new this.$.$mol_string();
+			(obj.hint) = () => ("Введите новое название");
+			(obj.value) = (next) => ((this.edited_title_value(next)));
+			return obj;
+		}
+		Editing_title_save_icon(){
+			const obj = new this.$.$mol_icon_check();
+			return obj;
+		}
+		save_editing_title(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Editing_title_save(){
+			const obj = new this.$.$finn_ui_button();
+			(obj.title) = () => ("");
+			(obj.icon) = () => ((this.Editing_title_save_icon()));
+			(obj.click) = (next) => ((this.save_editing_title(next)));
+			return obj;
+		}
+		Editing_title_cancel_icon(){
+			const obj = new this.$.$mol_icon_close();
+			return obj;
+		}
+		cancel_editing_title(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Editing_title_cancel(){
+			const obj = new this.$.$finn_ui_button();
+			(obj.title) = () => ("");
+			(obj.icon) = () => ((this.Editing_title_cancel_icon()));
+			(obj.click) = (next) => ((this.cancel_editing_title(next)));
+			return obj;
+		}
+		Editing_title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Editing_title_input()), 
+				(this.Editing_title_save()), 
+				(this.Editing_title_cancel())
+			]);
+			return obj;
+		}
+		title(){
+			return "";
+		}
+		value(){
+			return 0;
+		}
+		total(){
+			return 0;
+		}
+		title_editing_mode(next){
+			if(next !== undefined) return next;
+			return (this.title_editing_mode_active());
+		}
+		sub(){
+			return [(this.Expanse()), (this.Editing_title())];
+		}
+	};
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "title_editing_mode_active"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "edit_title_click"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Title"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Expanses_subcats_is_empty"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Expanse_subcats"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Add_subcat_icon"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Create_subcat_button"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Quota"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Expanse"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "edited_title_value"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Editing_title_input"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Editing_title_save_icon"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "save_editing_title"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Editing_title_save"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Editing_title_cancel_icon"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "cancel_editing_title"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Editing_title_cancel"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "Editing_title"));
+	($mol_mem(($.$finn_ui_budget_expanse.prototype), "title_editing_mode"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $finn_ui_budget_expanse extends $.$finn_ui_budget_expanse {
+            edit_title_click(next) {
+                this.title_editing_mode_active(true);
+            }
+            save_editing_title(next) {
+                this.title_editing_mode_active(false);
+            }
+            cancel_editing_title(next) {
+                this.title_editing_mode_active(false);
+            }
+            _expanse_title() {
+                if (!this.title_editing_mode_active()) {
+                    return this.title();
+                }
+                else if (this.edited_title_value() == "") {
+                    return this.title();
+                }
+                return this.edited_title_value();
+            }
+            sub() {
+                if (!this.title_editing_mode_active()) {
+                    return super.sub().filter(item => item != this.Editing_title());
+                }
+                return super.sub();
+            }
+        }
+        $$.$finn_ui_budget_expanse = $finn_ui_budget_expanse;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("finn/ui/budget/expanse/expanse.view.css", "[finn_ui_budget_expanse_expanse] {\n\tborder: 1px solid var(--mol_theme_line);\n}\n\n[finn_ui_budget_expanse] mol_check_expand {\n\tcolor: var(--mol_theme_text);\n}\n\n[finn_ui_budget_expanse] mol_check_expand:active {\n\tcolor: var(--mol_theme_text);\n}\n\n[finn_ui_budget_expanse_quota] {\n\talign-items: center;\n\tmargin-right: var(--mol_gap_block);\n}\n\n[finn_ui_budget_expanse_create_subcat_button] {\n\tmargin-top: var(--mol_gap_block);\n\topacity: 0.75;\n}\n\n[finn_ui_budget_expanse_create_subcat_button]:hover {\n\topacity: 1;\n}\n\n[finn_ui_budget_expanse_editing_title] {\n\tmargin-top: calc(var(--mol_gap_block) / 2);\n}\n\n[finn_ui_budget_expanse_editing_title_save] {\n\tmargin: 0 calc(var(--mol_gap_block) / 2);\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_minus) = class $mol_icon_minus extends ($.$mol_icon) {
+		path(){
+			return "M19,13H5V11H19V13Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_number) = class $mol_number extends ($.$mol_view) {
+		precision(){
+			return 1;
+		}
+		type(){
+			return "tel";
+		}
+		value_string(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		hint(){
+			return " ";
+		}
+		string_enabled(){
+			return (this.enabled());
+		}
+		submit(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		String(){
+			const obj = new this.$.$mol_string();
+			(obj.type) = () => ((this.type()));
+			(obj.value) = (next) => ((this.value_string(next)));
+			(obj.hint) = () => ((this.hint()));
+			(obj.enabled) = () => ((this.string_enabled()));
+			(obj.submit) = (next) => ((this.submit(next)));
+			return obj;
+		}
+		event_dec(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		dec_enabled(){
+			return (this.enabled());
+		}
+		dec_icon(){
+			const obj = new this.$.$mol_icon_minus();
+			return obj;
+		}
+		Dec(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.event_click) = (next) => ((this.event_dec(next)));
+			(obj.enabled) = () => ((this.dec_enabled()));
+			(obj.sub) = () => ([(this.dec_icon())]);
+			return obj;
+		}
+		event_inc(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		inc_enabled(){
+			return (this.enabled());
+		}
+		inc_icon(){
+			const obj = new this.$.$mol_icon_plus();
+			return obj;
+		}
+		Inc(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.event_click) = (next) => ((this.event_inc(next)));
+			(obj.enabled) = () => ((this.inc_enabled()));
+			(obj.sub) = () => ([(this.inc_icon())]);
+			return obj;
+		}
+		precision_view(){
+			return (this.precision());
+		}
+		precision_change(){
+			return (this.precision());
+		}
+		value_min(){
+			return -Infinity;
+		}
+		value_max(){
+			return +Infinity;
+		}
+		value(next){
+			if(next !== undefined) return next;
+			return +NaN;
+		}
+		enabled(){
+			return true;
+		}
+		sub(){
+			return [
+				(this.String()), 
+				(this.Dec()), 
+				(this.Inc())
+			];
+		}
+	};
+	($mol_mem(($.$mol_number.prototype), "value_string"));
+	($mol_mem(($.$mol_number.prototype), "submit"));
+	($mol_mem(($.$mol_number.prototype), "String"));
+	($mol_mem(($.$mol_number.prototype), "event_dec"));
+	($mol_mem(($.$mol_number.prototype), "dec_icon"));
+	($mol_mem(($.$mol_number.prototype), "Dec"));
+	($mol_mem(($.$mol_number.prototype), "event_inc"));
+	($mol_mem(($.$mol_number.prototype), "inc_icon"));
+	($mol_mem(($.$mol_number.prototype), "Inc"));
+	($mol_mem(($.$mol_number.prototype), "value"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/number/number.css", "[mol_number] {\n\tdisplay: flex;\n\tflex: 0 1 auto;\n\tposition: relative;\n\talign-items: stretch;\n\tmax-width: 100%;\n}\n\n[mol_number_string] {\n\tappearance: textfield;\n\tflex: 1 1 7rem;\n\twidth: 7rem;\n}\n\n[mol_number_string]::-webkit-inner-spin-button {\n\tdisplay: none;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_number extends $.$mol_number {
+            value_limited(val) {
+                if (Number.isNaN(val))
+                    return this.value(val);
+                if (val === undefined)
+                    return this.value();
+                const min = this.value_min();
+                const max = this.value_max();
+                if (val < min)
+                    return this.value(min);
+                if (val > max)
+                    return this.value(max);
+                return this.value(val);
+            }
+            event_dec(next) {
+                this.value_limited((this.value_limited() || 0) - this.precision_change());
+            }
+            event_inc(next) {
+                this.value_limited((this.value_limited() || 0) + this.precision_change());
+            }
+            round(val) {
+                if (Number.isNaN(val))
+                    return '';
+                if (val === 0)
+                    return '0';
+                if (!val)
+                    return '';
+                const precision_view = this.precision_view();
+                if (!precision_view)
+                    return val.toFixed();
+                if (precision_view >= 1) {
+                    return (val / precision_view).toFixed();
+                }
+                else {
+                    const fixed_number = Math.log10(1 / precision_view);
+                    return val.toFixed(Math.ceil(fixed_number));
+                }
+            }
+            value_string(next) {
+                const current = this.round(this.value_limited());
+                if (next === undefined)
+                    return current;
+                const precision = this.precision_view();
+                if (precision - Math.floor(precision) === 0)
+                    next = next.replace(/[.,]/g, '');
+                next = (this.value_min() < 0 && next.startsWith('-') ? '-' : '')
+                    + next.replace(/,/g, '.').replace(/[^\d\.]/g, '').replace(/^0{2,}/, '0');
+                let dot_pos = next.indexOf('.');
+                if (dot_pos !== -1) {
+                    const prev = $mol_wire_probe(() => this.value_string()) ?? '';
+                    const dot_pos_prev = prev.indexOf('.');
+                    if (dot_pos_prev === dot_pos)
+                        dot_pos = next.lastIndexOf('.');
+                    const frac = next.slice(dot_pos + 1).replace(/\./g, '');
+                    next = (next.slice(0, dot_pos) || '0').replace(/\./g, '') + '.' + frac;
+                }
+                if (Number.isNaN(Number(next)))
+                    return next;
+                if (next.endsWith('.'))
+                    return next;
+                if (next.endsWith('-'))
+                    return next;
+                this.value_limited(Number(next || Number.NaN));
+                return next;
+            }
+            dec_enabled() {
+                return this.enabled() && (!((this.value() || 0) <= this.value_min()));
+            }
+            inc_enabled() {
+                return this.enabled() && (!((this.value() || 0) >= this.value_max()));
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_number.prototype, "value_string", null);
+        __decorate([
+            $mol_mem
+        ], $mol_number.prototype, "dec_enabled", null);
+        __decorate([
+            $mol_mem
+        ], $mol_number.prototype, "inc_enabled", null);
+        $$.$mol_number = $mol_number;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$finn_ui_budget_expanse_subcat) = class $finn_ui_budget_expanse_subcat extends ($.$mol_list) {
+		title_editing_mode_active(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		total_editing_mode_active(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		_subcat_title(){
+			return "";
+		}
+		edit_title_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Title(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this._subcat_title()));
+			(obj.event) = () => ({"dblclick": (next) => (this.edit_title_click(next))});
+			return obj;
+		}
+		_subcat_total(){
+			return 0;
+		}
+		edit_total_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Quota(){
+			const obj = new this.$.$finn_ui_budget_expanse_value();
+			(obj.value) = () => ((this.value()));
+			(obj.total) = () => ((this._subcat_total()));
+			(obj.event) = () => ({"dblclick": (next) => (this.edit_total_click(next))});
+			return obj;
+		}
+		Subcat(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.sub) = () => ([(this.Title()), (this.Quota())]);
+			return obj;
+		}
+		edited_title_value(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Editing_title_input(){
+			const obj = new this.$.$mol_string();
+			(obj.hint) = () => ("Введите новое название");
+			(obj.value) = (next) => ((this.edited_title_value(next)));
+			return obj;
+		}
+		Editing_title_save_icon(){
+			const obj = new this.$.$mol_icon_check();
+			return obj;
+		}
+		save_editing_title(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Editing_title_save(){
+			const obj = new this.$.$finn_ui_button();
+			(obj.title) = () => ("");
+			(obj.icon) = () => ((this.Editing_title_save_icon()));
+			(obj.click) = (next) => ((this.save_editing_title(next)));
+			return obj;
+		}
+		Editing_title_cancel_icon(){
+			const obj = new this.$.$mol_icon_close();
+			return obj;
+		}
+		cancel_editing_title(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Editing_title_cancel(){
+			const obj = new this.$.$finn_ui_button();
+			(obj.title) = () => ("");
+			(obj.icon) = () => ((this.Editing_title_cancel_icon()));
+			(obj.click) = (next) => ((this.cancel_editing_title(next)));
+			return obj;
+		}
+		Editing_title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Editing_title_input()), 
+				(this.Editing_title_save()), 
+				(this.Editing_title_cancel())
+			]);
+			return obj;
+		}
+		edited_total_value(next){
+			if(next !== undefined) return next;
+			return 0;
+		}
+		Editing_total_input(){
+			const obj = new this.$.$mol_number();
+			(obj.value_min) = () => (0);
+			(obj.precision_change) = () => (500);
+			(obj.hint) = () => ("Введите новую сумму");
+			(obj.value) = (next) => ((this.edited_total_value(next)));
+			return obj;
+		}
+		Editing_total_save_icon(){
+			const obj = new this.$.$mol_icon_check();
+			return obj;
+		}
+		save_editing_total(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Editing_total_save(){
+			const obj = new this.$.$finn_ui_button();
+			(obj.title) = () => ("");
+			(obj.icon) = () => ((this.Editing_total_save_icon()));
+			(obj.click) = (next) => ((this.save_editing_total(next)));
+			return obj;
+		}
+		Editing_total_cancel_icon(){
+			const obj = new this.$.$mol_icon_close();
+			return obj;
+		}
+		cancel_editing_total(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Editing_total_cancel(){
+			const obj = new this.$.$finn_ui_button();
+			(obj.title) = () => ("");
+			(obj.icon) = () => ((this.Editing_total_cancel_icon()));
+			(obj.click) = (next) => ((this.cancel_editing_total(next)));
+			return obj;
+		}
+		Editing_total(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Editing_total_input()), 
+				(this.Editing_total_save()), 
+				(this.Editing_total_cancel())
+			]);
+			return obj;
+		}
+		title(){
+			return "";
+		}
+		value(){
+			return 0;
+		}
+		total(){
+			return 0;
+		}
+		title_editing_mode(next){
+			if(next !== undefined) return next;
+			return (this.title_editing_mode_active());
+		}
+		total_editing_mode(next){
+			if(next !== undefined) return next;
+			return (this.total_editing_mode_active());
+		}
+		sub(){
+			return [
+				(this.Subcat()), 
+				(this.Editing_title()), 
+				(this.Editing_total())
+			];
+		}
+	};
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "title_editing_mode_active"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "total_editing_mode_active"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "edit_title_click"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Title"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "edit_total_click"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Quota"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Subcat"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "edited_title_value"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Editing_title_input"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Editing_title_save_icon"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "save_editing_title"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Editing_title_save"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Editing_title_cancel_icon"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "cancel_editing_title"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Editing_title_cancel"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Editing_title"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "edited_total_value"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Editing_total_input"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Editing_total_save_icon"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "save_editing_total"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Editing_total_save"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Editing_total_cancel_icon"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "cancel_editing_total"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Editing_total_cancel"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "Editing_total"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "title_editing_mode"));
+	($mol_mem(($.$finn_ui_budget_expanse_subcat.prototype), "total_editing_mode"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $finn_ui_budget_expanse_subcat extends $.$finn_ui_budget_expanse_subcat {
+            edit_title_click(next) {
+                this.title_editing_mode_active(true);
+            }
+            save_editing_title(next) {
+                this.title_editing_mode_active(false);
+            }
+            cancel_editing_title(next) {
+                this.title_editing_mode_active(false);
+            }
+            _subcat_title() {
+                if (!this.title_editing_mode_active()) {
+                    return this.title();
+                }
+                else if (this.edited_title_value() == "") {
+                    return this.title();
+                }
+                return this.edited_title_value();
+            }
+            edit_total_click(next) {
+                this.total_editing_mode_active(true);
+            }
+            save_editing_total(next) {
+                this.total_editing_mode_active(false);
+            }
+            cancel_editing_total(next) {
+                this.total_editing_mode_active(false);
+            }
+            edited_total_value(next) {
+                return next ?? this.total();
+            }
+            _subcat_total() {
+                if (!this.total_editing_mode_active()) {
+                    return this.total();
+                }
+                return this.edited_total_value();
+            }
+            sub() {
+                let sub = [...super.sub()];
+                if (!this.title_editing_mode_active()) {
+                    sub = sub.filter(item => item != this.Editing_title());
+                }
+                if (!this.total_editing_mode_active()) {
+                    sub = sub.filter(item => item != this.Editing_total());
+                }
+                return sub;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $finn_ui_budget_expanse_subcat.prototype, "edited_total_value", null);
+        $$.$finn_ui_budget_expanse_subcat = $finn_ui_budget_expanse_subcat;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("finn/ui/budget/expanse/subcat/subcat.view.css", "[finn_ui_budget_expanse_subcat_subcat] {\n\tbackground: var(--mol_theme_hover);\n\tborder: 1px solid var(--mol_theme_line);\n\tcolor: var(--mol_theme_text);\n\tjustify-content: space-between;\n}\n\n[finn_ui_budget_expanse_subcat_subcat]:active {\n\tcolor: var(--mol_theme_text);\n}\n\n[finn_ui_budget_expanse_subcat_editing_title] {\n\tmargin-top: calc(var(--mol_gap_block) / 2);\n}\n\n[finn_ui_budget_expanse_subcat_editing_title_save] {\n\tmargin: 0 calc(var(--mol_gap_block) / 2);\n}\n\n[finn_ui_budget_expanse_subcat_editing_total_input] {\n\twidth: 100%;\n}\n\n[finn_ui_budget_expanse_subcat_editing_total] {\n\tmargin-top: calc(var(--mol_gap_block) / 2);\n}\n\n[finn_ui_budget_expanse_subcat_editing_total_save] {\n\tmargin: 0 calc(var(--mol_gap_block) / 2);\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$finn_app_budgets) = class $finn_app_budgets extends ($.$finn_ui_page) {
+		Income_title_text(){
+			const obj = new this.$.$finn_ui_header();
+			(obj.title) = () => ("Доходы");
+			return obj;
+		}
+		total_income_quota(){
+			return 0;
+		}
+		Income_quota(){
+			const obj = new this.$.$finn_ui_budget_income_value();
+			(obj.value) = () => ((this.total_income_quota()));
+			return obj;
+		}
+		Income_title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Income_title_text()), (this.Income_quota())]);
+			return obj;
+		}
+		income_head(){
+			return [(this.Income_title())];
+		}
+		Add_source_icon(){
+			const obj = new this.$.$mol_icon_plus();
+			return obj;
+		}
+		Add_source(){
+			const obj = new this.$.$finn_ui_button();
+			(obj.title) = () => ("");
+			(obj.icon) = () => ((this.Add_source_icon()));
+			return obj;
+		}
+		Incomes_is_empty(){
+			const obj = new this.$.$finn_ui_stub_empty();
+			(obj.text) = () => ("Создайте первый источник доходов, нажав на +");
+			return obj;
+		}
+		incomes_list(){
+			return [(this.Incomes_is_empty())];
+		}
+		Incomes(){
+			const obj = new this.$.$mol_section();
+			(obj.head) = () => ((this.income_head()));
+			(obj.tools) = () => ([(this.Add_source())]);
+			(obj.content) = () => ((this.incomes_list()));
+			return obj;
+		}
+		Expanse_title_text(){
+			const obj = new this.$.$finn_ui_header();
+			(obj.title) = () => ("Расходы");
+			return obj;
+		}
+		total_expanse_value(){
+			return 0;
+		}
+		total_expanse_total(){
+			return 0;
+		}
+		Expanse_quota(){
+			const obj = new this.$.$finn_ui_budget_expanse_value();
+			(obj.value) = () => ((this.total_expanse_value()));
+			(obj.total) = () => ((this.total_expanse_total()));
+			return obj;
+		}
+		Expanse_title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Expanse_title_text()), (this.Expanse_quota())]);
+			return obj;
+		}
+		expanse_head(){
+			return [(this.Expanse_title())];
+		}
+		Add_category_icon(){
+			const obj = new this.$.$mol_icon_plus();
+			return obj;
+		}
+		Add_category(){
+			const obj = new this.$.$finn_ui_button();
+			(obj.title) = () => ("");
+			(obj.icon) = () => ((this.Add_category_icon()));
+			return obj;
+		}
+		Expanses_is_empty(){
+			const obj = new this.$.$finn_ui_stub_empty();
+			(obj.text) = () => ("Создайте первую категорию расходов, нажав на +");
+			return obj;
+		}
+		expanses_list(){
+			return [(this.Expanses_is_empty())];
+		}
+		Expanses(){
+			const obj = new this.$.$mol_section();
+			(obj.head) = () => ((this.expanse_head()));
+			(obj.tools) = () => ([(this.Add_category())]);
+			(obj.content) = () => ((this.expanses_list()));
+			return obj;
+		}
+		income_title(id){
+			return "...";
+		}
+		income_value(id){
+			return 0;
+		}
+		expanse_title(id){
+			return "...";
+		}
+		Expanses_subcats_is_empty(){
+			const obj = new this.$.$finn_ui_stub_empty();
+			(obj.text) = () => ("Создайте первую подкатегорию расхода, нажав кнопку ниже");
+			return obj;
+		}
+		expanse_subcats(id){
+			return [(this.Expanses_subcats_is_empty())];
+		}
+		subcat_title(id){
+			return "...";
+		}
+		subcat_value(id){
+			return 0;
+		}
+		subcat_total(id){
+			return 0;
+		}
+		title(){
+			return "Бюджеты";
+		}
+		body(){
+			return [(this.Incomes()), (this.Expanses())];
+		}
+		Income_source(id){
+			const obj = new this.$.$finn_ui_budget_income();
+			(obj.title) = (id) => ((this.income_title(id)));
+			(obj.value) = (id) => ((this.income_value(id)));
+			return obj;
+		}
+		Expance_category(id){
+			const obj = new this.$.$finn_ui_budget_expanse();
+			(obj.title) = (id) => ((this.expanse_title(id)));
+			(obj.subcats) = (id) => ((this.expanse_subcats(id)));
+			return obj;
+		}
+		Expanse_subcat(id){
+			const obj = new this.$.$finn_ui_budget_expanse_subcat();
+			(obj.title) = (id) => ((this.subcat_title(id)));
+			(obj.value) = (id) => ((this.subcat_value(id)));
+			(obj.total) = (id) => ((this.subcat_total(id)));
+			return obj;
+		}
+	};
+	($mol_mem(($.$finn_app_budgets.prototype), "Income_title_text"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Income_quota"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Income_title"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Add_source_icon"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Add_source"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Incomes_is_empty"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Incomes"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Expanse_title_text"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Expanse_quota"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Expanse_title"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Add_category_icon"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Add_category"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Expanses_is_empty"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Expanses"));
+	($mol_mem(($.$finn_app_budgets.prototype), "Expanses_subcats_is_empty"));
+	($mol_mem_key(($.$finn_app_budgets.prototype), "Income_source"));
+	($mol_mem_key(($.$finn_app_budgets.prototype), "Expance_category"));
+	($mol_mem_key(($.$finn_app_budgets.prototype), "Expanse_subcat"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $finn_app_budgets extends $.$finn_app_budgets {
+            income_head() {
+                return [this.Income_title(), this.Incomes().Tools()];
+            }
+            expanse_head() {
+                return [this.Expanse_title(), this.Expanses().Tools()];
+            }
+            incomes_list() {
+                return [this.Income_source(0)];
+            }
+            expanses_list() {
+                return [this.Expance_category(0)];
+            }
+            expanse_subcats(id) {
+                return [this.Expanse_subcat(0)];
+            }
+        }
+        $$.$finn_app_budgets = $finn_app_budgets;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("finn/app/budgets/budgets.view.css", "[finn_app_budgets_income_title_text],\n[finn_app_budgets_expanse_title_text] {\n\tpadding: var(--mol_gap_text);\n\tpadding-left: var(--finn_ui_gap_half);\n\n\ttext-shadow: 0 0;\n\tfont-weight: normal;\n\tfont-size: 1.25rem;\n}\n\n[finn_app_budgets_expanses] {\n\tmargin-top: calc(var(--mol_gap_block) * 3);\n}\n\n[finn_app_budgets_income_title],\n[finn_app_budgets_expanse_title] {\n\talign-items: baseline;\n}\n\n[finn_ui_budget_income],\n[finn_ui_budget_expanse] {\n\tmargin-top: var(--mol_gap_block);\n}\n\n[finn_ui_stub_empty] {\n\tpadding: var(--finn_ui_gap_half) 0 0 var(--finn_ui_gap_half);\n}\n");
 })($ || ($ = {}));
 
 ;
 	($.$finn_app) = class $finn_app extends ($.$mol_book2_catalog) {
-		Dashboard(){
-			const obj = new this.$.$finn_widgets_page();
-			(obj.title) = () => ("Дашборд");
+		Theme(){
+			const obj = new this.$.$mol_theme_auto();
+			return obj;
+		}
+		Lights_icon(){
+			const obj = new this.$.$mol_icon_brightness_4();
+			return obj;
+		}
+		Lighter(){
+			const obj = new this.$.$mol_lights_toggle();
+			(obj.Icon) = () => ((this.Lights_icon()));
 			return obj;
 		}
 		Transactions(){
-			const obj = new this.$.$finn_widgets_page();
+			const obj = new this.$.$finn_ui_page();
 			(obj.title) = () => ("Транзакции");
 			return obj;
 		}
-		Calendar(){
-			const obj = new this.$.$finn_widgets_page();
-			(obj.title) = () => ("Календарь");
-			return obj;
-		}
 		Accounts(){
-			const obj = new this.$.$finn_widgets_page();
+			const obj = new this.$.$finn_ui_page();
 			(obj.title) = () => ("Счета");
 			return obj;
 		}
-		Categories(){
-			const obj = new this.$.$finn_widgets_page();
-			(obj.title) = () => ("Категории");
+		Budgets(){
+			const obj = new this.$.$finn_app_budgets();
+			return obj;
+		}
+		Calendar(){
+			const obj = new this.$.$finn_ui_page();
+			(obj.title) = () => ("Календарь");
 			return obj;
 		}
 		title(){
@@ -7547,31 +9323,38 @@ var $;
 		menu_title(){
 			return "💸 Finn";
 		}
+		plugins(){
+			return [(this.Theme())];
+		}
+		menu_tools(){
+			return [(this.Lighter())];
+		}
 		spreads(){
 			return {
-				"dashboard": (this.Dashboard()), 
 				"transactions": (this.Transactions()), 
-				"calendar": (this.Calendar()), 
 				"accounts": (this.Accounts()), 
-				"categories": (this.Categories())
+				"budgets": (this.Budgets()), 
+				"calendar": (this.Calendar())
 			};
 		}
 		Placeholder(){
 			return null;
 		}
 	};
-	($mol_mem(($.$finn_app.prototype), "Dashboard"));
+	($mol_mem(($.$finn_app.prototype), "Theme"));
+	($mol_mem(($.$finn_app.prototype), "Lights_icon"));
+	($mol_mem(($.$finn_app.prototype), "Lighter"));
 	($mol_mem(($.$finn_app.prototype), "Transactions"));
-	($mol_mem(($.$finn_app.prototype), "Calendar"));
 	($mol_mem(($.$finn_app.prototype), "Accounts"));
-	($mol_mem(($.$finn_app.prototype), "Categories"));
+	($mol_mem(($.$finn_app.prototype), "Budgets"));
+	($mol_mem(($.$finn_app.prototype), "Calendar"));
 
 
 ;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("finn/app/app.view.css", "[finn_widgets_page] {\n\tmargin-right: auto;\n}\n\n[finn_app_menu] {\n\tflex-basis: 20em;\n\tmargin-left: auto\n}\n");
+    $mol_style_attach("finn/app/app.view.css", ":root {\n\t/* зеленая цветовая тема по умолчанию */\n\t--mol_theme_hue: 120deg;\n\n\t/* отключение подсветки тапов на мобильных устройствах */\n\t-webkit-tap-highlight-color: transparent;\n}\n\n[finn_ui_page] {\n\tmargin-right: auto;\n}\n\n[finn_app_menu] {\n\tflex-basis: 20em;\n\tmargin-left: auto\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -11027,6 +12810,22 @@ var $;
             $mol_action
         ], $mol_state_arg_mock, "go", null);
         context.$mol_state_arg = $mol_state_arg_mock;
+    });
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_test({
+        'all cases of using maybe'() {
+            $mol_assert_equal($mol_maybe(0)[0], 0);
+            $mol_assert_equal($mol_maybe(false)[0], false);
+            $mol_assert_equal($mol_maybe(null)[0], void 0);
+            $mol_assert_equal($mol_maybe(void 0)[0], void 0);
+            $mol_assert_equal($mol_maybe(void 0).map(v => v.toString())[0], void 0);
+            $mol_assert_equal($mol_maybe(0).map(v => v.toString())[0], '0');
+        },
     });
 })($ || ($ = {}));
 
