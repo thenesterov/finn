@@ -204,7 +204,8 @@
     "$mol_icon_chevron",
     "$finn_ui_budget_expanse_subcat",
     "$mol_number",
-    "$mol_icon_minus"
+    "$mol_icon_chevron_left",
+    "$mol_icon_chevron_right"
   ],
   "dependencies": {
     "jsdom": "*"
