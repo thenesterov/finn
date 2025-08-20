@@ -1,0 +1,14 @@
+$finn_pocket $mol_section
+	head /
+		<= Header $mol_view sub /
+			<= Header_text $finn_ui_header
+				title <= title \
+			<= Header_quota $mol_view
+				sub <= quota /
+	tools <= right_tools /
+		<= Add_button $finn_ui_button
+			title \
+			icon <= Add_icon $mol_icon_plus
+	content <= content_list /
+		<= Content_is_empty $finn_ui_stub_empty
+			text <= stub_empty_text \

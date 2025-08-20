@@ -1,0 +1,15 @@
+$finn_app_accounts $finn_ui_page
+	title \Счета
+	body /
+		<= Bank_accounts $finn_pocket
+			title \Банковские счета
+			quota /
+				\2 шт.
+			stub_empty_text \Создайте первый банковский счет, нажав на +
+			content_list /
+				<= First_item $finn_pocket_item
+					title \Т-Банк, личный
+					content /
+						\В будущем тут будут какие-то детали счета
+				<= Second_item $finn_pocket_item
+					title \Т-Банк, совместный

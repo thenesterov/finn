@@ -1,0 +1,41 @@
+[finn_pocket_item] {
+	margin-top: var(--mol_gap_block);
+}
+
+[finn_pocket_item_item] {
+	border: 1px solid var(--mol_theme_line);
+	background: var(--mol_theme_hover);
+	border-radius: var(--mol_gap_round);
+}
+
+[finn_pocket_item_item] [mol_button_typed]:hover {
+	box-shadow: none;
+}
+
+[finn_pocket_item_item] mol_check_expand {
+	color: var(--mol_theme_text);
+}
+
+[finn_pocket_item_item] mol_check_expand:active {
+	color: var(--mol_theme_text);
+}
+
+[finn_pocket_item_title] {
+	user-select: none;
+}
+
+[finn_pocket_item_item_content] {
+	padding: var(--mol_gap_text);
+}
+
+[finn_pocket_item_edit_form] {
+	display: inline;
+}
+
+[finn_pocket_item_title_edit_save] {
+	margin: auto var(--finn_ui_gap_half);
+}
+
+[finn_pocket_item_title_edit_form] {
+	margin-top: var(--finn_ui_gap_half);
+}

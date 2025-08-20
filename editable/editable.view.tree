@@ -1,0 +1,6 @@
+$finn_editable $mol_ghost
+	style *
+		^
+		cursor <= cursor_type \cell
+	event *
+		dblclick? <=> show_edit_form? null

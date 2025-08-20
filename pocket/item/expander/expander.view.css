@@ -1,0 +1,23 @@
+[finn_pocket_item_expander] {
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+[finn_pocket_item_expander_label] {
+	display: flex;
+	flex-wrap: wrap;
+	border-radius: var(--mol_gap_round);
+	align-items: center;
+}
+
+[finn_pocket_item_expander_trigger] {
+	flex: auto;
+	position: relative;
+}
+
+[finn_pocket_item_expander_title] {
+	z-index: 1;
+	flex-shrink: 1;
+	margin-left: calc(-1 * var(--mol_gap_block));
+}

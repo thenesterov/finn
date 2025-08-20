@@ -1,0 +1,15 @@
+$finn_pocket_item_expander $mol_list
+	rows /
+		<= Label $mol_view
+			sub <= label_sub /
+				<= Trigger $mol_check_expand
+					checked? <=> expanded? false
+					expandable <= expandable true
+				<= Title $mol_view
+					sub <= label /
+						<= title
+					style *
+						marginLeft <= title_margin_style \inherit
+				<= Tools null
+		<= Content $mol_list
+			rows <= content /

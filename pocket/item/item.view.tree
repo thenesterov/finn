@@ -1,0 +1,28 @@
+$finn_pocket_item $mol_list
+	title \...
+	sub /
+		<= Item $finn_pocket_item_expander
+			label /
+				<= Title_editable $finn_editable
+					Sub <= Title $mol_paragraph
+						title <= item_title \...
+					show_edit_form? <=> show_title_edit_form? false
+			content <=> content /
+		<= Edit_form $mol_view
+			sub <= edit_items /
+				<= Title_edit_form $mol_view sub /
+					<= Title_edit_field $mol_string
+						plugins /
+							<= Hotkey $mol_hotkey
+								key *
+									escape? <=> cancel_title_editing? null
+						hint \Введите новое название
+						value? <=> title_edited_value? \
+					<= Title_edit_save $finn_ui_button
+						title \
+						icon <= Title_edit_save_icon $mol_icon_check
+						enabled <= title_save_button_enabled false
+					<= Title_edit_cancel $finn_ui_button
+						title \
+						icon <= Title_edit_cancel_icon $mol_icon_close
+						click? <=> cancel_title_editing? null

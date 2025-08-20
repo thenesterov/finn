@@ -1,5 +1,5 @@
 $finn_app $mol_book2_catalog
-	title \💸 Finn – финансовый трекер
+	title \Finn – финансовый трекер
 	menu_title \💸 Finn
 	plugins /
 		<= Theme $mol_theme_auto
@@ -9,9 +9,21 @@ $finn_app $mol_book2_catalog
 	spreads *
 		transactions <= Transactions $finn_ui_page
 			title \Транзакции
-		accounts <= Accounts $finn_ui_page
-			title \Счета
 		budgets <= Budgets $finn_app_budgets
+		accounts <= Accounts $finn_app_accounts
+		debts <= Debts $finn_ui_page
+			title \Долги
+			body / <= Coming_soon
+		purchases <= Purchases $finn_ui_page
+			title \Покупки
+			body / <= Coming_soon
 		calendar <= Calendar $finn_ui_page
 			title \Календарь
+			body / <= Coming_soon
+		calculators <= Calculators $finn_ui_page
+			title \Калькуляторы
+			body / <= Coming_soon
 	Placeholder null
+	-
+	Coming_soon $mol_text
+		text \✨ //Скоро...//
