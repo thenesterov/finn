@@ -19,5 +19,6 @@
 	pack icon git \https://github.com/nin-jin/mol_icon.git
 \/finn
 	include \/mol/offline/install
+	deploy \/finn/logo/favicon.png
 \/mol/view
 	include \/mol/view/tree/test
