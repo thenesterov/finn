@@ -252,7 +252,6 @@
     "$mol_embed_vklive"
   ],
   "dependencies": {
-    "internal": "*",
     "jsdom": "*"
   }
 }
